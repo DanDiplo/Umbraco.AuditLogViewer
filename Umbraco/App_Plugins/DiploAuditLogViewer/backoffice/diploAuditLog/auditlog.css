@@ -1,0 +1,46 @@
+﻿
+.umb-modal.fade.in.diplo-modal {
+    margin-left:0;
+}
+
+@media only screen and (min-width: 1400px) {
+    #logdetail {
+        width: 840px !important;
+        margin-left: -840px !important;
+    }
+}
+
+@media only screen and (min-width: 1200px) and (max-width: 1399px) {
+    #logdetail {
+        width: 600px !important;
+        margin-left: -600px !important;
+    }
+}
+
+@media only screen and (min-width: 1000px) and (max-width: 1199px) {
+    #logdetail {
+        width: 500px !important;
+        margin-left: -500px !important;
+    }
+}
+
+#auditLog tbody a {
+    cursor:pointer;
+}
+
+#audit-log-intro {
+    color:#666;
+    padding-left:5px;
+}
+
+#auditLog .diplo-button {
+    cursor:pointer;
+}
+
+#auditLog .diplo-button:hover {
+    background-color:#ddd;
+}
+
+#auditLog small {
+    color:#ccc;
+}

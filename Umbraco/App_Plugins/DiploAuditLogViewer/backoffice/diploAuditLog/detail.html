@@ -1,0 +1,135 @@
+﻿<script>
+    function AuditLogDetailController($scope, $routeParams, diploAuditLogResources, notificationsService) {
+
+        $scope.logDetail = null;
+
+        $("#logdetail").parent("div").addClass('diplo-modal');
+
+        var findInArray = function (array, value, offset) {
+            for (var i = 0; i < array.length; i++) {
+
+                console.log(array[i]["Id"], value);
+
+                if (array[i]["Id"] == value) {
+                    return array[i + offset];
+                }
+            }
+            return null;
+        }
+
+        $scope.hasPrevious = function () {
+            return $scope.dialogData.items[0].Id !== $scope.dialogData.Id;
+        }
+
+        $scope.hasNext = function () {
+            return $scope.dialogData.items[$scope.dialogData.items.length - 1].Id !== $scope.dialogData.Id;
+        }
+
+        $scope.nextItem = function () {
+            var next = findInArray($scope.dialogData.items, $scope.dialogData.Id, 1);
+
+            if (next) {
+                getLogDetail(next.Id);
+            }
+        }
+
+        $scope.previousItem = function () {
+            var prev = findInArray($scope.dialogData.items, $scope.dialogData.Id, -1);
+            if (prev) {
+                getLogDetail(prev.Id);
+            }
+        }
+
+        $scope.getEditUrl = function (entry) {
+            return diploAuditLogResources.getEditUrl(entry);
+        }
+
+        function getLogDetail(id) {
+            diploAuditLogResources.getLogDetail(id).then(function (data) {
+                $scope.logDetail = data;
+                $scope.dialogData.Id = data.Id;
+            }, function (data) {
+                notificationsService.error("Error", "Could not load log data: " + data);
+            });
+        };
+
+        getLogDetail($scope.dialogData.Id);
+
+    }
+</script>
+
+<style type="text/css">
+    #logdetail h3 {
+        margin: 2px;
+    }
+
+    #logdetail .umb-scrollable {
+        z-index: 9999;
+    }
+
+    #logdetail .umb-panel-footer .btn {
+        z-index: 99999;
+    }
+
+    #logdetail .btn-default {
+        margin-top: 9px;
+    }
+</style>
+
+<div class="umb-panel" ng-controller="AuditLogDetailController" id="logdetail">
+
+    <div class="umb-panel-header">
+        <div class="row-fluid">
+            <div class="span6">
+                <h3>Log Data Detail<br /><small>{{dialogData.logItem.Date}}</small></h3>
+            </div>
+            <div class="span6">
+                <div class="btn-toolbar pull-right">
+                    <a ng-click="previousItem()" class="btn" ng-show="hasPrevious()"><i class="icon-previous"></i>Previous</a>
+                    <a ng-click="nextItem()" class="btn" ng-show="hasNext()">Next <i class="icon-next"></i></a>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+
+    <div class="umb-panel-body umb-scrollable">
+        <table class="table table-striped">
+
+            <tbody>
+                <tr>
+                    <th>Action:</th>
+                    <td>{{logDetail.LogType}}</td>
+                </tr>
+                <tr>
+                    <th>Comment:</th>
+                    <td>{{logDetail.Comment}}</td>
+                </tr>
+                <tr>
+                    <th>Date:</th>
+                    <td title="{{logDetail.DateStamp}}">{{logDetail.DateStamp | date:'fullDate'}} at {{logDetail.DateStamp | date:'mediumTime'}}</td>
+                </tr>
+                <tr>
+                    <th>User:</th>
+                    <td><a ng-href="#/users/framed/%252Fumbraco%252Fusers%252FeditUser.aspx%253Fid%253D{{logDetail.UserId}}" target="_blank" title="Edit User">{{logDetail.UserName}}</a> - <a href="mailto:{{logDetail.UserEmail}}">{{logDetail.UserEmail}}</a></td>
+                </tr>
+                <tr>
+                    <th>Node:</th>
+                    <td><span ng-show="logDetail.NodeId > 0"><a ng-href="{{getEditUrl(l)}}" target="_blank" title="Edit Node">{{logDetail.NodeId}}</a></span><span ng-show="logDetail.NodeId < 1">N/A</span></td>
+                </tr>
+                <tr ng-show="logDetail.Name">
+                    <th>Content:</th>
+                    <td><a ng-show="pageUrl.length" title="View" ng-href="{{pageUrl}}" target="_blank" title="View">{{logDetail.Name}}</a> <span ng-hide="pageUrl.length">{{logDetail.Name}}</span></td>
+                </tr>
+                <tr ng-show="logDetail.Alias">
+                    <th>DocType:</th>
+                    <td title="{{logDetail.Description}}"><span class="{{logDetail.Icon}}"></span> {{logDetail.Alias}}</td>
+                </tr>
+            </tbody>
+
+        </table>
+
+    </div>
+</div>
+
