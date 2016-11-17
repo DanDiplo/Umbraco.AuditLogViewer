@@ -3,7 +3,7 @@
 
         $scope.logDetail = null;
 
-        $("#logdetail").parent("div").addClass('diplo-modal');
+        $("#audit-logdetail").parent("div").addClass('diplo-modal');
 
         var findInArray = function (array, value, offset) {
             for (var i = 0; i < array.length; i++) {
@@ -59,24 +59,24 @@
 </script>
 
 <style type="text/css">
-    #logdetail h3 {
+    #audit-logdetail h3 {
         margin: 2px;
     }
 
-    #logdetail .umb-scrollable {
+    #audit-logdetail .umb-scrollable {
         z-index: 9999;
     }
 
-    #logdetail .umb-panel-footer .btn {
+    #audit-logdetail .umb-panel-footer .btn {
         z-index: 99999;
     }
 
-    #logdetail .btn-default {
+    #audit-logdetail .btn-default {
         margin-top: 9px;
     }
 </style>
 
-<div class="umb-panel" ng-controller="AuditLogDetailController" id="logdetail">
+<div class="umb-panel" ng-controller="AuditLogDetailController" id="audit-logdetail">
 
     <div class="umb-panel-header">
         <div class="row-fluid">

@@ -4,21 +4,21 @@
 }
 
 @media only screen and (min-width: 1400px) {
-    #logdetail {
+    #audit-logdetail {
         width: 840px !important;
         margin-left: -840px !important;
     }
 }
 
 @media only screen and (min-width: 1200px) and (max-width: 1399px) {
-    #logdetail {
+    #audit-logdetail {
         width: 600px !important;
         margin-left: -600px !important;
     }
 }
 
 @media only screen and (min-width: 1000px) and (max-width: 1199px) {
-    #logdetail {
+    #audit-logdetail {
         width: 500px !important;
         margin-left: -500px !important;
     }

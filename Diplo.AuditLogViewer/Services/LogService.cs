@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Diplo.AuditLogViewer.Models;
+using Umbraco.Core;
 using Umbraco.Core.Cache;
 using Umbraco.Core.Persistence;
 
@@ -75,6 +76,9 @@ namespace Diplo.AuditLogViewer.Services
             {
                 query = query.Append(" AND L.NodeId = @0", request.NodeId.Value);
             }
+
+            if (request.SortColumn.InvariantEquals("id"))
+                request.SortColumn = "L.id";
 
             query = query.Append(" ORDER BY " + request.SortColumn + " " + request.SortOrder);
 
