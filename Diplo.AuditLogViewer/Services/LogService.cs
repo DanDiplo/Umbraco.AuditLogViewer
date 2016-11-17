@@ -191,7 +191,7 @@ namespace Diplo.AuditLogViewer.Services
             LEFT JOIN umbracoUser U ON L.userId = U.id
             WHERE L.DateStamp > @0
             GROUP BY U.userName, U.id
-            ORDER BY UserCount DESC";
+            ORDER BY Count(u.Id) DESC";
 
             return db.Page<BasicUser>(1, amount, new Sql(sql, DateTime.Today.AddDays(daysBack)));
         }
