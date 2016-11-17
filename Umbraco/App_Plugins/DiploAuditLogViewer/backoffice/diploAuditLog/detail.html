@@ -2,6 +2,7 @@
     function AuditLogDetailController($scope, $routeParams, diploAuditLogResources, notificationsService) {
 
         $scope.logDetail = null;
+        var id = $scope.dialogData.entry.Id;
 
         $("#audit-logdetail").parent("div").addClass('diplo-modal');
 
@@ -18,30 +19,29 @@
         }
 
         $scope.hasPrevious = function () {
-            return $scope.dialogData.items[0].Id !== $scope.dialogData.Id;
+            return $scope.dialogData.items[0].Id !== id;
         }
 
         $scope.hasNext = function () {
-            return $scope.dialogData.items[$scope.dialogData.items.length - 1].Id !== $scope.dialogData.Id;
+            return $scope.dialogData.items[$scope.dialogData.items.length - 1].Id !== id;
         }
 
         $scope.nextItem = function () {
-            var next = findInArray($scope.dialogData.items, $scope.dialogData.Id, 1);
-
+            var next = findInArray($scope.dialogData.items, id, 1);
             if (next) {
                 getLogDetail(next.Id);
             }
         }
 
         $scope.previousItem = function () {
-            var prev = findInArray($scope.dialogData.items, $scope.dialogData.Id, -1);
+            var prev = findInArray($scope.dialogData.items, id, -1);
             if (prev) {
                 getLogDetail(prev.Id);
             }
         }
 
-        $scope.getEditUrl = function (entry) {
-            return diploAuditLogResources.getEditUrl(entry);
+        $scope.getEditUrl = function () {
+            return diploAuditLogResources.getEditUrl($scope.dialogData.entry);
         }
 
         function getLogDetail(id) {
@@ -53,35 +53,17 @@
             });
         };
 
-        getLogDetail($scope.dialogData.Id);
+        getLogDetail(id);
 
     }
 </script>
-
-<style type="text/css">
-    #audit-logdetail h3 {
-        margin: 2px;
-    }
-
-    #audit-logdetail .umb-scrollable {
-        z-index: 9999;
-    }
-
-    #audit-logdetail .umb-panel-footer .btn {
-        z-index: 99999;
-    }
-
-    #audit-logdetail .btn-default {
-        margin-top: 9px;
-    }
-</style>
 
 <div class="umb-panel" ng-controller="AuditLogDetailController" id="audit-logdetail">
 
     <div class="umb-panel-header">
         <div class="row-fluid">
             <div class="span6">
-                <h3>Log Data Detail<br /><small>{{dialogData.logItem.Date}}</small></h3>
+                <h3>Log Data Detail<br /><small>{{logDetail.DateStamp}}</small></h3>
             </div>
             <div class="span6">
                 <div class="btn-toolbar pull-right">
@@ -90,7 +72,6 @@
                 </div>
             </div>
         </div>
-
 
     </div>
 
@@ -112,15 +93,15 @@
                 </tr>
                 <tr>
                     <th>User:</th>
-                    <td><a ng-href="#/users/framed/%252Fumbraco%252Fusers%252FeditUser.aspx%253Fid%253D{{logDetail.UserId}}" target="_blank" title="Edit User">{{logDetail.UserName}}</a> - <a href="mailto:{{logDetail.UserEmail}}">{{logDetail.UserEmail}}</a></td>
+                    <td><small class="icon-out"></small> <a ng-href="#/users/framed/%252Fumbraco%252Fusers%252FeditUser.aspx%253Fid%253D{{logDetail.UserId}}" target="_blank" title="Edit User">{{logDetail.UserName}}</a> - <a title="Email" href="mailto:{{logDetail.UserEmail}}" target="_blank"> {{logDetail.UserEmail}}</a></td>
                 </tr>
                 <tr>
                     <th>Node:</th>
-                    <td><span ng-show="logDetail.NodeId > 0"><a ng-href="{{getEditUrl(l)}}" target="_blank" title="Edit Node">{{logDetail.NodeId}}</a></span><span ng-show="logDetail.NodeId < 1">N/A</span></td>
+                    <td><span ng-show="logDetail.NodeId > 0"><small class="icon-out"></small> <a ng-href="{{getEditUrl()}}" target="_blank" title="Edit Node">{{logDetail.NodeId}}</a></span><span ng-show="logDetail.NodeId < 1">N/A</span></td>
                 </tr>
                 <tr ng-show="logDetail.Name">
                     <th>Content:</th>
-                    <td><a ng-show="pageUrl.length" title="View" ng-href="{{pageUrl}}" target="_blank" title="View">{{logDetail.Name}}</a> <span ng-hide="pageUrl.length">{{logDetail.Name}}</span></td>
+                    <td> <a ng-show="pageUrl.length" title="View" ng-href="{{pageUrl}}" target="_blank" title="View"><small class="icon-out"></small> {{logDetail.Name}}</a> <span ng-hide="pageUrl.length">{{logDetail.Name}}</span></td>
                 </tr>
                 <tr ng-show="logDetail.Alias">
                     <th>DocType:</th>

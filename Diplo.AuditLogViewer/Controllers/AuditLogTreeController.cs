@@ -46,11 +46,14 @@ namespace Diplo.AuditLogViewer.Controllers
             {
                 tree.Add(AddDateRangeTreeNode(id, qs, "Today", DateTime.Today, DateTime.Today));
                 tree.Add(AddDateRangeTreeNode(id, qs, "Yesterday", DateTime.Today.AddDays(-1), DateTime.Today.AddDays(-1)));
+                tree.Add(AddDateRangeTreeNode(id, qs, DateTime.Today.AddDays(-2).ToString("dddd"), DateTime.Today.AddDays(-2), DateTime.Today.AddDays(-2)));
+                tree.Add(AddDateRangeTreeNode(id, qs, DateTime.Today.AddDays(-3).ToString("dddd"), DateTime.Today.AddDays(-3), DateTime.Today.AddDays(-3)));
+                tree.Add(AddDateRangeTreeNode(id, qs, DateTime.Today.AddDays(-4).ToString("dddd"), DateTime.Today.AddDays(-4), DateTime.Today.AddDays(-4)));
                 tree.Add(AddDateRangeTreeNode(id, qs, "This week", DateTime.Today.AddDays(-7), DateTime.Today));
                 tree.Add(AddDateRangeTreeNode(id, qs, "Previous week", DateTime.Today.AddDays(-14), DateTime.Today.AddDays(-7)));
-                tree.Add(AddDateRangeTreeNode(id, qs, "Last 30 days", DateTime.Today.AddDays(-30), DateTime.Today));
-                tree.Add(AddDateRangeTreeNode(id, qs, "Last 180 days", DateTime.Today.AddDays(-180), DateTime.Today));
-                tree.Add(AddDateRangeTreeNode(id, qs, "Last Year", DateTime.Today.AddYears(-1), DateTime.Today));
+                tree.Add(AddDateRangeTreeNode(id, qs, "Within 30 days", DateTime.Today.AddDays(-30), DateTime.Today));
+                tree.Add(AddDateRangeTreeNode(id, qs, "Within 180 days", DateTime.Today.AddDays(-180), DateTime.Today));
+                tree.Add(AddDateRangeTreeNode(id, qs, "This year", DateTime.Today.AddYears(-1), DateTime.Today));
             }
 
             if (id == "LatestPages")

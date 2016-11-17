@@ -190,12 +190,20 @@ namespace Diplo.AuditLogViewer.Services
         /// <returns>A page of Umbraco users</returns>
         public Page<BasicUser> GetMostActiveUsers(int amount = 10, int daysBack = -30)
         {
-            const string sql = @"SELECT U.id, U.userName, Count(u.Id) as UserCount
+            string sql = @"SELECT U.id, U.userName, Count(u.Id) as UserCount
             FROM umbracoLog L 
             LEFT JOIN umbracoUser U ON L.userId = U.id
             WHERE L.DateStamp > @0
-            GROUP BY U.userName, U.id
-            ORDER BY Count(u.Id) DESC";
+            GROUP BY U.userName, U.id ";
+
+            if (db.GetDatabaseProvider() == DatabaseProviders.SqlServerCE)
+            {
+                sql += "ORDER BY UserCount DESC";
+            }
+            else
+            {
+                sql += "ORDER BY Count(u.Id) DESC";
+            }
 
             return db.Page<BasicUser>(1, amount, new Sql(sql, DateTime.Today.AddDays(daysBack)));
         }

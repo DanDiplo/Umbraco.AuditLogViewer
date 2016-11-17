@@ -38,6 +38,8 @@ angular.module('umbraco.resources').factory('diploAuditLogResources', function (
                 return "#/settings/framed/settings%252FeditLanguage.aspx%253Fid%253D" + entry.NodeId;
             else if (entry.Comment.includes("Save Media"))
                 return "#/media/media/edit/" + entry.NodeId;
+            else if (entry.Comment.includes("Save DataTypeDefinition"))
+                return "#/developer/dataTypes/edit/" + entry.NodeId;
 
             return "#/content/content/edit/" + entry.NodeId;
         }

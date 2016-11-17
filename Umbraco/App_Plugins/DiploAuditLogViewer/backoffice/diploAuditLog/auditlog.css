@@ -1,6 +1,6 @@
 ﻿
 .umb-modal.fade.in.diplo-modal {
-    margin-left:0;
+    margin-left: 0;
 }
 
 @media only screen and (min-width: 1400px) {
@@ -25,22 +25,48 @@
 }
 
 #auditLog tbody a {
-    cursor:pointer;
+    cursor: pointer;
 }
 
 #audit-log-intro {
-    color:#666;
-    padding-left:5px;
+    color: #666;
+    padding-left: 5px;
 }
 
 #auditLog .diplo-button {
-    cursor:pointer;
+    cursor: pointer;
 }
 
-#auditLog .diplo-button:hover {
-    background-color:#ddd;
-}
+    #auditLog .diplo-button:hover {
+        background-color: #e4e4e4;
+    }
 
 #auditLog small {
-    color:#ccc;
+    color: #ccc;
+}
+
+#auditLog tr:hover a {
+    text-decoration: underline;
+}
+
+/* Detail */
+
+#audit-logdetail h3 {
+    margin: 2px;
+}
+
+#audit-logdetail .umb-scrollable {
+    z-index: 9999;
+}
+
+#audit-logdetail .umb-panel-footer .btn {
+    z-index: 99999;
+}
+
+#audit-logdetail .btn-default {
+    margin-top: 9px;
+}
+
+#audit-logdetail small {
+    color: #ccc;
 }

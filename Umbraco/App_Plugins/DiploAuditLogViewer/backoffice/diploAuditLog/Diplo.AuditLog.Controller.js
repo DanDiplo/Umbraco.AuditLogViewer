@@ -118,10 +118,10 @@ angular.module("umbraco").controller("DiploAuditLogEditController",
             });
         }
 
-        $scope.openDetail = function (id, data) {
+        $scope.openDetail = function (entry, data) {
             var dialog = dialogService.open({
                 template: '/App_Plugins/DiploAuditLogViewer/backoffice/diploAuditLog/detail.html',
-                dialogData: { Id: id, items: data }, show: true, width: 800
+                dialogData: { entry: entry, items: data }, show: true, width: 800
             });
         }
 

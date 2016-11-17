@@ -104,7 +104,7 @@
                             <td>{{ l.DateStamp | date:'short' }}<small>{{ l.DateStamp | date:'.sss' }}</small></td>
                             <td>{{l.UserName}}</td>
                             <td>{{l.LogType}}</td>
-                            <td><a ng-click="openDetail(l.Id, logData)">{{l.Comment}}</a></td>
+                            <td><a ng-click="openDetail(l, logData)">{{l.Comment}}</a></td>
                             <td><span ng-show="l.NodeId > 0"><a ng-href="{{getEditUrl(l)}}" title="Edit" target="_blank">{{l.NodeId}}</a></span></td>
                             <td>{{l.Name}}</td>
                         </tr>
