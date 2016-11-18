@@ -1,4 +1,3 @@
-
 #ignore thumbnails created by windows
 Thumbs.db
 #Ignore files build by Visual Studio
@@ -27,8 +26,10 @@ obj/
 [Rr]elease*/
 #Ignore nuget packages
 /packages/
+/PostBuild.txt
 
 /screenshots/
 
 BuildPackage/Package/*
 .DiploAuditLogViewer.boltdata/*
+Umbraco/Bin/Diplo.AuditLogViewer.dll

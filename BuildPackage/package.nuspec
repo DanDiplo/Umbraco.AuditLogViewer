@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
+    <metadata>
+        <id>Diplo.AuditLogViewer</id>
+        <version>1.0.0</version>
+        <title>Audit Log viewer for Umbraco 7.4 or higher</title>
+        <authors>Dan Booth</authors>
+        <owners>Dan Booth</owners>
+        <projectUrl>https://www.diplo.co.uk/</projectUrl>
+        <requireLicenseAcceptance>false</requireLicenseAcceptance>
+        <description>
+          Diplo Audit Log Viewer for Umbraco 7.4 and above allows you to easily view and search the audit data that is stored in the UmbracoLog table in your site's database.
+          Features
+          --------
+          * Filter log data by log type (Save, Publish, Delete etc)
+          * Filter by user (ie. person responsible)
+          * Filter by date or date range (ie. all audit events that occured within a given period)
+          * Filter by node (with easy to use content-picker)
+          * Search the log data comments by keyword
+          * Handy quick filters for the more common audit tasks
+          * Uses fast, server side pagination of data so it should be quick no matter how large your log table has become
+        </description>
+        <summary>
+          Diplo Audit Log Viewer for Umbraco 7.4 and above allows you to easily view and search the audit data that is stored in the UmbracoLog table in your site's database.
+        </summary>
+        <copyright>Dan Booth</copyright>
+        <licenseUrl>http://opensource.org/licenses/MIT</licenseUrl>
+        <language>en-GB</language>
+        <tags>umbraco umbraco7 developer audit log table logviewer</tags>
+        <dependencies>
+          <dependency id="UmbracoCms.Core" version="7.4.0" />
+        </dependencies>
+    </metadata>    
+</package>
