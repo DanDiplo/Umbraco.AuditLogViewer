@@ -1,10 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Net;
 using System.Net.Http.Formatting;
-using System.Web;
-using System.Web.Http;
 using Diplo.AuditLogViewer.Services;
 using umbraco.BusinessLogic.Actions;
 using Umbraco.Core;
@@ -16,7 +13,7 @@ using Umbraco.Web.WebApi.Filters;
 namespace Diplo.AuditLogViewer.Controllers
 {
     /// <summary>
-    /// Diplo AuditLog Tree Controller
+    /// Controller that controls generation of the audit log tree within the developer section
     /// </summary>
     [UmbracoApplicationAuthorize(Constants.Applications.Developer)]
     [Tree(Constants.Applications.Developer, "diploAuditLog", "Audit Logs", sortOrder: 10)]
@@ -25,11 +22,20 @@ namespace Diplo.AuditLogViewer.Controllers
     {
         private readonly LogService logService;
 
+        /// <summary>
+        /// Instantaies the controller with the log service
+        /// </summary>
         public AuditLogTreeController()
         {
             this.logService = new LogService(UmbracoContext.Application.DatabaseContext.Database, UmbracoContext.Application.ApplicationCache.RuntimeCache);
         }
 
+        /// <summary>
+        /// Gets the nodes that form the tree
+        /// </summary>
+        /// <param name="id">The tree identifier</param>
+        /// <param name="qs">Any posted parameters</param>
+        /// <returns>A collection of tree nodes</returns>
         protected override TreeNodeCollection GetTreeNodes(string id, FormDataCollection qs)
         {
             TreeNodeCollection tree = new TreeNodeCollection();
@@ -44,16 +50,7 @@ namespace Diplo.AuditLogViewer.Controllers
 
             if (id == "TimePeriod")
             {
-                tree.Add(AddDateRangeTreeNode(id, qs, "Today", DateTime.Today, DateTime.Today));
-                tree.Add(AddDateRangeTreeNode(id, qs, "Yesterday", DateTime.Today.AddDays(-1), DateTime.Today.AddDays(-1)));
-                tree.Add(AddDateRangeTreeNode(id, qs, DateTime.Today.AddDays(-2).ToString("dddd"), DateTime.Today.AddDays(-2), DateTime.Today.AddDays(-2)));
-                tree.Add(AddDateRangeTreeNode(id, qs, DateTime.Today.AddDays(-3).ToString("dddd"), DateTime.Today.AddDays(-3), DateTime.Today.AddDays(-3)));
-                tree.Add(AddDateRangeTreeNode(id, qs, DateTime.Today.AddDays(-4).ToString("dddd"), DateTime.Today.AddDays(-4), DateTime.Today.AddDays(-4)));
-                tree.Add(AddDateRangeTreeNode(id, qs, "This week", DateTime.Today.AddDays(-7), DateTime.Today));
-                tree.Add(AddDateRangeTreeNode(id, qs, "Previous week", DateTime.Today.AddDays(-14), DateTime.Today.AddDays(-7)));
-                tree.Add(AddDateRangeTreeNode(id, qs, "Within 30 days", DateTime.Today.AddDays(-30), DateTime.Today));
-                tree.Add(AddDateRangeTreeNode(id, qs, "Within 180 days", DateTime.Today.AddDays(-180), DateTime.Today));
-                tree.Add(AddDateRangeTreeNode(id, qs, "This year", DateTime.Today.AddYears(-1), DateTime.Today));
+                this.AddDateRangeTree(tree, id, qs);
             }
 
             if (id == "LatestPages")
@@ -69,7 +66,13 @@ namespace Diplo.AuditLogViewer.Controllers
             return tree;
         }
 
-        protected override MenuItemCollection GetMenuForNode(string id, FormDataCollection queryStrings)
+        /// <summary>
+        /// Gets the menu items that form the right-click menu
+        /// </summary>
+        /// <param name="id">The tree identifier</param>
+        /// <param name="qs">Any posted parameters</param>
+        /// <returns>The menu items</returns>
+        protected override MenuItemCollection GetMenuForNode(string id, FormDataCollection qs)
         {
             var menu = new MenuItemCollection();
 
@@ -81,10 +84,18 @@ namespace Diplo.AuditLogViewer.Controllers
             return menu;
         }
 
-        private TreeNode AddDateRangeTreeNode(string id, FormDataCollection qs, string label,  DateTime from, DateTime to)
+        private void AddDateRangeTree(TreeNodeCollection tree, string id, FormDataCollection qs)
         {
-            string dateRange = String.Format("date:{0:yyyy-MM-dd}:{1:yyyy-MM-dd}", from, to);
-            return CreateTreeNode(dateRange, id, qs, label, "icon-calendar");
+            tree.Add(AddDateRangeNode(id, qs, "Today", DateTime.Today, DateTime.Today));
+            tree.Add(AddDateRangeNode(id, qs, "Yesterday", DateTime.Today.AddDays(-1), DateTime.Today.AddDays(-1)));
+            tree.Add(AddDateRangeNode(id, qs, DateTime.Today.AddDays(-2).ToString("dddd"), DateTime.Today.AddDays(-2), DateTime.Today.AddDays(-2)));
+            tree.Add(AddDateRangeNode(id, qs, DateTime.Today.AddDays(-3).ToString("dddd"), DateTime.Today.AddDays(-3), DateTime.Today.AddDays(-3)));
+            tree.Add(AddDateRangeNode(id, qs, DateTime.Today.AddDays(-4).ToString("dddd"), DateTime.Today.AddDays(-4), DateTime.Today.AddDays(-4)));
+            tree.Add(AddDateRangeNode(id, qs, "This week", DateTime.Today.AddDays(-7), DateTime.Today));
+            tree.Add(AddDateRangeNode(id, qs, "Previous week", DateTime.Today.AddDays(-14), DateTime.Today.AddDays(-7)));
+            tree.Add(AddDateRangeNode(id, qs, "Within 30 days", DateTime.Today.AddDays(-30), DateTime.Today));
+            tree.Add(AddDateRangeNode(id, qs, "Within 180 days", DateTime.Today.AddDays(-180), DateTime.Today));
+            tree.Add(AddDateRangeNode(id, qs, "This year", DateTime.Today.AddYears(-1), DateTime.Today));
         }
 
         private void AddLatestPagesTree(TreeNodeCollection tree, string id, FormDataCollection qs)
@@ -105,6 +116,12 @@ namespace Diplo.AuditLogViewer.Controllers
             {
                 tree.Add(CreateTreeNode("user:" + item.Username, id, qs, item.Username, "icon-user"));
             }
+        }
+
+        private TreeNode AddDateRangeNode(string id, FormDataCollection qs, string label, DateTime from, DateTime to)
+        {
+            string dateRange = String.Format("date:{0:yyyy-MM-dd}:{1:yyyy-MM-dd}", from, to);
+            return CreateTreeNode(dateRange, id, qs, label, "icon-calendar");
         }
     }
 }

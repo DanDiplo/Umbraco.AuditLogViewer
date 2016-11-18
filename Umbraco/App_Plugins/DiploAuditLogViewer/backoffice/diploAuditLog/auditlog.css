@@ -35,10 +35,12 @@
 
 #auditLog .diplo-button {
     cursor: pointer;
+    color: #666;
 }
 
     #auditLog .diplo-button:hover {
         background-color: #e4e4e4;
+        color: #000;
     }
 
 #auditLog small {

@@ -32,14 +32,15 @@
 
                     <div class="input-prepend">
                         <span class="add-on"><i class="icon-search"></i></span>
-                        <input type="search" class="form-control input-medium" placeholder="Type to search..." ng-model="searchFilter" prevent-enter-submit no-dirty-check ng-change="search(searchFilter)">
+                        <input type="search" class="form-control input-medium" placeholder="Type to search..." ng-model="searchTerm" ng-change="search(searchTerm)">
+                        <span class="add-on diplo-button delete" ng-show="searchTerm" ng-click="searchTerm = null; logTypeChange()"><i class="icon-delete"></i></span>
                     </div>
 
                     <div class="input-prepend">
                         <span class="add-on"><i class="icon-umb-content"></i></span>
                         <input type="number" class="form-control input-mini" placeholder="Node" title="{{nodeName}}" ng-change="logTypeChange()" ng-model="nodeId" />
-                        <span class="add-on diplo-button" ng-click="openContentPicker()" title="Select page"><i class="icon-colorpicker"></i></span>
-                        <span class="add-on diplo-button" ng-show="nodeId" ng-click="nodeId = null; logTypeChange()"><i class="icon-delete"></i></span>
+                        <span class="add-on diplo-button" ng-click="openContentPicker()" title="Select page"><span class="icon-colorpicker"></span></span>
+                        <span class="add-on diplo-button delete" ng-show="nodeId" ng-click="nodeId = null; logTypeChange()"><span class="icon-delete"></span></span>
                     </div>
 
                     <div class="pull-right">

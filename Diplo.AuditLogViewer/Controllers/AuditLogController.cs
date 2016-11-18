@@ -1,29 +1,27 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Runtime.Serialization;
-using System.Text;
-using System.Threading.Tasks;
 using Diplo.AuditLogViewer.Models;
 using Diplo.AuditLogViewer.Services;
 using Umbraco.Core;
-using Umbraco.Core.Logging;
-using Umbraco.Core.Persistence;
 using Umbraco.Web.Editors;
 using Umbraco.Web.Mvc;
-using Umbraco.Web.WebApi;
 using Umbraco.Web.WebApi.Filters;
 
 namespace Diplo.AuditLogViewer.Controllers
 {
-    // see http://24days.in/umbraco/2015/custom-listview/
-
+    /// <summary>
+    /// Controller for returning log data as JSON to authenticated developers
+    /// </summary>
     [UmbracoApplicationAuthorize(Constants.Applications.Developer)]
     [PluginController("AuditLogViewer")]
     public class AuditLogController : UmbracoAuthorizedJsonController
     {
         private readonly LogService logService;
 
+        /// <summary>
+        /// Instantiate a new audit log controller and configure the log service with the Umbraco database
+        /// </summary>
         public AuditLogController()
         {
             this.logService = new LogService(UmbracoContext.Application.DatabaseContext.Database, UmbracoContext.Application.ApplicationCache.RuntimeCache);

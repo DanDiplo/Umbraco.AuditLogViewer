@@ -2,7 +2,7 @@
 // Thanks to  David Brendel for custom paging info - http://24days.in/umbraco/2015/custom-listview/
 
 angular.module("umbraco").controller("DiploAuditLogEditController",
-    function ($scope, $http, $routeParams, $route, $location, dialogService, notificationsService, navigationService, eventsService, diploAuditLogResources) {
+    function ($scope, $routeParams, dialogService, notificationsService, eventsService, diploAuditLogResources) {
 
         $scope.isLoading = true;
         $scope.reverse = true;
@@ -11,11 +11,11 @@ angular.module("umbraco").controller("DiploAuditLogEditController",
         $scope.nodeId = null;
         $scope.page = null;
         $scope.logUserName = null;
+        $scope.logTypeName = null;
         $scope.pageSizeList = [10, 20, 50, 100, 200, 500];
         $scope.itemsPerPage = $scope.pageSizeList[2];
 
         var id = $routeParams.id;
-
         $scope.logname = id;
 
         if (id.startsWith("date:")) {
@@ -39,7 +39,7 @@ angular.module("umbraco").controller("DiploAuditLogEditController",
                 $scope.rangeTo = ($scope.itemsPerPage * ($scope.currentPage - 1)) + $scope.itemCount;
                 $scope.rangeFrom = ($scope.rangeTo - $scope.itemCount) + 1;
 
-                console.log("ItemsPerPage: " + $scope.itemsPerPage + ", Total Pages: " + $scope.totalPages + ", CurrentPage: " + $scope.currentPage + ", Predicate: " + $scope.predicate + ", Order: " + $scope.reverse + ", Search: " + $scope.searchTerm + ", LogType: " + $scope.logTypeName);
+                //console.log("ItemsPerPage: " + $scope.itemsPerPage + ", Total Pages: " + $scope.totalPages + ", CurrentPage: " + $scope.currentPage + ", Predicate: " + $scope.predicate + ", Order: " + $scope.reverse + ", Search: " + $scope.searchTerm + ", LogType: " + $scope.logTypeName);
 
                 $scope.isLoading = false;
 
