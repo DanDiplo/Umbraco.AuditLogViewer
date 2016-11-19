@@ -39,6 +39,12 @@ namespace Diplo.AuditLogViewer.Services
         /// <returns>A page of log results</returns>
         public Page<LogEntry> SearchAuditLog(LogSearchRequest request)
         {
+            if (!IsValidOrderByParameter(request.SortColumn))
+                throw new ArgumentOutOfRangeException("The order by value '" + request.SortColumn + "' is not a valid sort parameter.");
+
+            if (!IsValidOrderByDirectionParameter(request.SortOrder))
+                throw new ArgumentOutOfRangeException("The order by value '" + request.SortOrder + "' is not a valid sort order.");
+
             string sql = @"SELECT L.Id, N.[text] as Name, U.userName as UserName, L.Datestamp as DateStamp, L.logHeader as LogType, L.logComment as Comment, L.nodeId 
 			FROM umbracoLog L 
 			LEFT JOIN umbracoUser U ON L.userId = U.id
@@ -207,5 +213,38 @@ namespace Diplo.AuditLogViewer.Services
 
             return db.Page<BasicUser>(1, amount, new Sql(sql, DateTime.Today.AddDays(daysBack)));
         }
+
+        /// <summary>
+        /// Validates sort order column parameter is in whitelist (you can't parameterise these in PetaPoco)
+        /// </summary>
+        /// <param name="param">The sort column parameter to check</param>
+        /// <returns>True if it is; otherwise false</returns>
+        private bool IsValidOrderByParameter(string param)
+        {
+            return allowedOrderByParams.Contains(param, StringComparer.OrdinalIgnoreCase);
+        }
+
+        /// <summary>
+        /// Validates sort order direction is in whitelist (you can't parameterise these in PetaPoco)
+        /// </summary>
+        /// <param name="param">The sort order parameter to check</param>
+        /// <returns>True if it is; otherwise false</returns>
+        private bool IsValidOrderByDirectionParameter(string param)
+        {
+            return param.InvariantEquals("asc") || param.InvariantEquals("desc");
+        }
+
+        private static readonly string[] allowedOrderByParams = new string[]
+        {
+            "L.Id",
+            "L.NodeId",
+            "N.Text",
+            "U.id",
+            "U.userName",
+            "U.userEmail",
+            "L.Datestamp",
+            "L.LogHeader",
+            "L.logComment"
+        };
     }
 }

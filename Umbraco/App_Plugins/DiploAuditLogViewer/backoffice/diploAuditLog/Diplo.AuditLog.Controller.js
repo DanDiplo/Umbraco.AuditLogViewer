@@ -7,7 +7,7 @@ angular.module("umbraco").controller("DiploAuditLogEditController",
         $scope.isLoading = true;
         $scope.reverse = true;
         $scope.searchTerm = "";
-        $scope.predicate = 'id';
+        $scope.predicate = 'L.Datestamp';
         $scope.nodeId = null;
         $scope.page = null;
         $scope.logUserName = null;

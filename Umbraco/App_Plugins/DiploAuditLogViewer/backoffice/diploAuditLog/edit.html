@@ -75,27 +75,27 @@
                     <thead>
                         <tr>
                             <td>
-                                <a href="#" prevent-default class="sortable" ng-click="order('DateStamp')" title="Order by date">Date</a>
+                                <a href="#" prevent-default class="sortable" ng-click="order('L.Datestamp')" title="Order by date">Date</a>
                                 <i class="icon" ng-class="{'icon-navigation-up': reverse, 'icon-navigation-down': !reverse}" ng-show="predicate == 'DateStamp'"></i>
                             </td>
                             <td>
-                                <a href="#" prevent-default class="sortable" ng-click="order('UserName')" title="Order by username">User</a>
+                                <a href="#" prevent-default class="sortable" ng-click="order('U.userName')" title="Order by username">User</a>
                                 <i class="icon" ng-class="{'icon-navigation-up': reverse, 'icon-navigation-down': !reverse}" ng-show="predicate == 'UserName'"></i>
                             </td>
                             <td>
-                                <a href="#" prevent-default class="sortable" ng-click="order('LogType')" title="Order by log action">Action</a>
+                                <a href="#" prevent-default class="sortable" ng-click="order('L.logHeader')" title="Order by log action">Action</a>
                                 <i class="icon" ng-class="{'icon-navigation-up': reverse, 'icon-navigation-down': !reverse}" ng-show="predicate == 'LogType'"></i>
                             </td>
                             <td>
-                                <a href="#" prevent-default class="sortable" ng-click="order('Comment')" title="Order by log comment">Comment</a>
+                                <a href="#" prevent-default class="sortable" ng-click="order('L.logComment')" title="Order by log comment">Comment</a>
                                 <i class="icon" ng-class="{'icon-navigation-up': reverse, 'icon-navigation-down': !reverse}" ng-show="predicate == 'Comment'"></i>
                             </td>
                             <td>
-                                <a href="#" prevent-default class="sortable" ng-click="order('NodeId')" title="Order by node Id">Node</a>
+                                <a href="#" prevent-default class="sortable" ng-click="order('L.nodeId')" title="Order by node Id">Node</a>
                                 <i class="icon" ng-class="{'icon-navigation-up': reverse, 'icon-navigation-down': !reverse}" ng-show="predicate == 'Comment'"></i>
                             </td>
                             <td>
-                                <a href="#" prevent-default class="sortable" ng-click="order('Name')" title="Order by node title">Content</a>
+                                <a href="#" prevent-default class="sortable" ng-click="order('N.text')" title="Order by node title">Content</a>
                                 <i class="icon" ng-class="{'icon-navigation-up': reverse, 'icon-navigation-down': !reverse}" ng-show="predicate == 'Name'"></i>
                             </td>
                         </tr>
