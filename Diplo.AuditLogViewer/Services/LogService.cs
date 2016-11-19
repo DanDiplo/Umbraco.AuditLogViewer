@@ -26,7 +26,7 @@ namespace Diplo.AuditLogViewer.Services
         public LogService(UmbracoDatabase db, IRuntimeCacheProvider cache)
         {
             if (db == null)
-                throw new ArgumentNullException(nameof(db));
+                throw new ArgumentNullException("db");
 
             this.db = db;
             this.cache = cache;

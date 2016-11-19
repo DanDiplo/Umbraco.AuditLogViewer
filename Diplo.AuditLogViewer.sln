@@ -7,7 +7,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Diplo.AuditLogViewer", "Dip
 EndProject
 Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "Umbraco", "Umbraco\", "{E86E4C34-3CFF-489B-96E3-DC85BBF3F12A}"
 	ProjectSection(WebsiteProperties) = preProject
-		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.0"
+		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.5"
 		Debug.AspNetCompiler.VirtualPath = "/localhost_51988"
 		Debug.AspNetCompiler.PhysicalPath = "Umbraco\"
 		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_51988\"
@@ -28,6 +28,7 @@ Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "Umbraco", "Umbraco\", "{E86
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Build", "Build", "{C688D156-BE4D-4457-B5D5-C46AB975D6DE}"
 	ProjectSection(SolutionItems) = preProject
+		BuildPackage\Build.bat = BuildPackage\Build.bat
 		BuildPackage\Package.build.xml = BuildPackage\Package.build.xml
 		BuildPackage\package.nuspec = BuildPackage\package.nuspec
 		BuildPackage\Package.xml = BuildPackage\Package.xml
