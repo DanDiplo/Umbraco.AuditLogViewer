@@ -28,6 +28,9 @@ obj/
 /packages/
 /PostBuild.txt
 
+# Visual Studio cache/options directory
+.vs/
+
 /screenshots/
 
 BuildPackage/Package/*
