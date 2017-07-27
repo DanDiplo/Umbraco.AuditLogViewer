@@ -100,9 +100,9 @@ namespace Diplo.AuditLogViewer.Controllers
 
         private void AddLatestPagesTree(TreeNodeCollection tree, string id, FormDataCollection qs)
         {
-            var paged = this.logService.GetLastUpdatedPages(10);
+            var latest = this.logService.GetLastUpdatedPages(10);
 
-            foreach (var item in paged.Items)
+            foreach (var item in latest)
             {
                 tree.Add(CreateTreeNode("node:" + item.NodeId, id, qs, item.Title, item.Icon));
             }

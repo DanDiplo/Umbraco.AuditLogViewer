@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Diplo.AuditLogViewer.Models;
 using Umbraco.Core;
 using Umbraco.Core.Cache;
@@ -177,15 +175,15 @@ namespace Diplo.AuditLogViewer.Services
         /// </summary>
         /// <param name="amount">The maximum number of pages to retrieve</param>
         /// <returns>A page of Umbraco pages</returns>
-        public Page<BasicPage> GetLastUpdatedPages(int amount = 10)
+        public IEnumerable<BasicPage> GetLastUpdatedPages(int amount = 10)
         {
-            const string sql = @"SELECT D.NodeId, D.Text as Title, D.UpdateDate, CT.Icon from cmsDocument D
+            const string sql = @"SELECT TOP {0} D.NodeId, D.Text as Title, D.UpdateDate, CT.Icon from cmsDocument D
             INNER JOIN cmsContent C ON C.nodeId = D.nodeId
             INNER JOIN cmsContentType CT ON C.contentType = CT.nodeId
             WHERE D.newest = 1 
             ORDER BY D.updateDate DESC";
 
-            return db.Page<BasicPage>(1, amount, new Sql(sql));
+            return db.Fetch<BasicPage>(new Sql(String.Format(sql, amount)));
         }
 
         /// <summary>
