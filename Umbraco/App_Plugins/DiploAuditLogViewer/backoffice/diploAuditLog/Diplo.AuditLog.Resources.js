@@ -25,7 +25,7 @@ angular.module('umbraco.resources').factory('diploAuditLogResources', function (
             );
         },
         getEditUrl: function (entry) {
-            if (entry == null || entry.NodeId === 0)
+            if (entry === null || entry.NodeId === 0)
                 return null;
 
             if (entry.Comment.includes(" Template "))
@@ -43,5 +43,5 @@ angular.module('umbraco.resources').factory('diploAuditLogResources', function (
 
             return "#/content/content/edit/" + entry.NodeId;
         }
-    }
+    };
 });
