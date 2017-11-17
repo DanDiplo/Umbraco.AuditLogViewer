@@ -2,7 +2,7 @@
 // Thanks to  David Brendel for custom paging info - http://24days.in/umbraco/2015/custom-listview/
 
 angular.module("umbraco").controller("DiploAuditLogEditController",
-    function ($scope, $routeParams, dialogService, notificationsService, eventsService, diploAuditLogResources) {
+    function ($scope, $routeParams, dialogService, notificationsService, navigationService, eventsService, diploAuditLogResources) {
 
         $scope.isLoading = true;
         $scope.reverse = true;
@@ -17,16 +17,24 @@ angular.module("umbraco").controller("DiploAuditLogEditController",
 
         var id = $routeParams.id;
         $scope.logname = id;
+        var path = [id];
 
         if (id.startsWith("date:")) {
             var parts = id.split(":");
             $scope.dateFrom = parts[1];
             $scope.dateTo = parts[2];
+            path.unshift("TimePeriod");
         }
         else if (id.startsWith("node:")) {
             var parts = id.split(":");
             $scope.nodeId = parseInt(parts[1]);
+            path.unshift("LatestPages");
         }
+        else if (id.startsWith("user:")) {
+            path.unshift("ActiveUsers");
+        }
+
+        navigationService.syncTree({ tree: $routeParams.tree, path: path , forceReload: false });
 
         function fetchData() {
             diploAuditLogResources.getLogData($scope.itemsPerPage, $scope.currentPage, $scope.predicate, $scope.reverse ? "desc" : "asc", $scope.searchTerm, $scope.logTypeName, $scope.logUserName, $scope.dateFrom, $scope.dateTo, $scope.nodeId).then(function (response) {
@@ -133,6 +141,8 @@ angular.module("umbraco").controller("DiploAuditLogEditController",
 
         getUserNames(fetchData);
 
+        /*
+
         // Thanks to Daniel Bardi - https://our.umbraco.org/forum/umbraco-7/developing-umbraco-7-packages/48870-Make-selected-node-in-custom-tree-appear-selected#comment-221866
         eventsService.on('appState.treeState.changed', function (event, args) {
             if (args.key === 'selectedNode') {
@@ -152,5 +162,7 @@ angular.module("umbraco").controller("DiploAuditLogEditController",
                 });
             }
         });
+
+        */
 
     });
