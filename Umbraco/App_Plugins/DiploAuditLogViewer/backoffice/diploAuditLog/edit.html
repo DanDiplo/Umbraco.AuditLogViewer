@@ -102,7 +102,7 @@
                     </thead>
                     <tbody>
                         <tr ng-repeat="l in logData" ng-class="{selected: isRowSelected(p.id)}">
-                            <td>{{ l.DateStamp | date:'short' }}<small>{{ l.DateStamp | date:'.sss' }}</small></td>
+                            <td>{{ l.DateStampFormatted }}<small>{{ l.DateStamp | date:'.sss' }}</small></td>
                             <td>{{l.UserName}}</td>
                             <td>{{l.LogType}}</td>
                             <td><a ng-click="openDetail(l, logData)">{{l.Comment}}</a></td>

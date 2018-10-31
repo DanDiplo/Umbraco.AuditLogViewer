@@ -3,7 +3,7 @@
   <info>
     <package>
       <name>Diplo Audit Log Viewer</name>
-      <version>1.0.2</version>
+      <version>1.0.4</version>
       <license url="http://opensource.org/licenses/MIT">MIT License</license>
       <url>https://www.diplo.co.uk/</url>
       <requirements>

@@ -2,7 +2,7 @@
 // Thanks to  David Brendel for custom paging info - http://24days.in/umbraco/2015/custom-listview/
 
 angular.module("umbraco").controller("DiploAuditLogEditController",
-    function ($scope, $routeParams, dialogService, notificationsService, navigationService, eventsService, diploAuditLogResources) {
+    function ($scope, $routeParams, dialogService, notificationsService, navigationService, eventsService, diploAuditLogResources, userService, dateHelper) {
 
         $scope.isLoading = true;
         $scope.reverse = true;
@@ -18,15 +18,16 @@ angular.module("umbraco").controller("DiploAuditLogEditController",
         var id = $routeParams.id;
         $scope.logname = id;
         var path = [id];
+        var parts;
 
         if (id.startsWith("date:")) {
-            var parts = id.split(":");
+            parts = id.split(":");
             $scope.dateFrom = parts[1];
             $scope.dateTo = parts[2];
             path.unshift("TimePeriod");
         }
         else if (id.startsWith("node:")) {
-            var parts = id.split(":");
+            parts = id.split(":");
             $scope.nodeId = parseInt(parts[1]);
             path.unshift("LatestPages");
         }
@@ -38,6 +39,13 @@ angular.module("umbraco").controller("DiploAuditLogEditController",
 
         function fetchData() {
             diploAuditLogResources.getLogData($scope.itemsPerPage, $scope.currentPage, $scope.predicate, $scope.reverse ? "desc" : "asc", $scope.searchTerm, $scope.logTypeName, $scope.logUserName, $scope.dateFrom, $scope.dateTo, $scope.nodeId).then(function (response) {
+
+                // workaround for Angular timezone issues
+                userService.getCurrentUser().then(function (currentUser) {
+                    angular.forEach(response.LogEntries, function (item) {
+                        item.DateStampFormatted = dateHelper.getLocalDate(item.DateStamp, currentUser.locale, 'LLL');
+                    });
+                });
 
                 $scope.logData = response.LogEntries;
                 $scope.totalPages = response.TotalPages;
@@ -54,7 +62,7 @@ angular.module("umbraco").controller("DiploAuditLogEditController",
             }, function (response) {
                 notificationsService.error("Error", "Could not load log data.");
             });
-        };
+        }
 
         function getLogTypes() {
             diploAuditLogResources.getLogTypes().then(function (data) {
@@ -62,7 +70,7 @@ angular.module("umbraco").controller("DiploAuditLogEditController",
             }, function (data) {
                 notificationsService.error("Error", "Could not load log types.");
             });
-        };
+        }
 
         function getUserNames(callback) {
             diploAuditLogResources.getUserNames().then(function (data) {
@@ -78,7 +86,7 @@ angular.module("umbraco").controller("DiploAuditLogEditController",
             }, function (data) {
                 notificationsService.error("Error", "Could not load log usernames.");
             });
-        };
+        }
 
         $scope.order = function (predicate) {
             $scope.reverse = ($scope.predicate === predicate) ? !$scope.reverse : false;
@@ -113,7 +121,7 @@ angular.module("umbraco").controller("DiploAuditLogEditController",
         $scope.logTypeChange = function () {
             $scope.currentPage = 1;
             fetchData();
-        }
+        };
 
         $scope.openContentPicker = function () {
             dialogService.contentPicker({
@@ -124,7 +132,7 @@ angular.module("umbraco").controller("DiploAuditLogEditController",
                     $scope.logTypeChange();
                 }
             });
-        }
+        };
 
         $scope.openDetail = function (entry, data) {
             var dialog = dialogService.open({
