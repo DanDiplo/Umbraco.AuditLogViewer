@@ -4,7 +4,7 @@ Diplo Audit Log Viewer for Umbraco CMS (7.4 and above) allows you to easily view
 
 This log viewer allows you to view this data in an easy-to-use interface that integrates into the Umbraco Developer tree.
 
-##Features##
+## Features ##
 
 - Filter log data by log type (Save, Publish, Delete etc)
 - Filter by user (ie. person responsible)
@@ -18,7 +18,7 @@ This log viewer allows you to view this data in an easy-to-use interface that in
 
 Read more in my blog post - https://www.diplo.co.uk/blog/web-development/diplo-audit-log-viewer-for-umbraco/
 
-##Releases##
+## Releases ##
 
 > PM > Install-Package Diplo.AuditLogViewer
 
