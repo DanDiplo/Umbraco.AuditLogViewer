@@ -6,7 +6,7 @@
     <title>Audit Log viewer for Umbraco 7.4 or higher</title>
     <authors>Dan Booth</authors>
     <owners>Dan Booth</owners>
-    <projectUrl>https://www.diplo.co.uk/</projectUrl>
+    <projectUrl>https://www.diplo.co.uk/blog/web-development/diplo-audit-log-viewer-for-umbraco/</projectUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>
       Diplo Audit Log Viewer for Umbraco CMS (7.4 and above) allows you to easily view and search the audit data that is stored in the UmbracoLog table in your site's database. This table contains all changes that are made to all content in your site. This log viewer allows you to view this data in an easy-to-use interface that integrates into the Umbraco Developer tree.
@@ -28,10 +28,12 @@
     <summary>
       Diplo Audit Log Viewer for Umbraco 7.4 and above allows you to easily view and search the audit data that is stored in the UmbracoLog table in your site's database.
     </summary>
+	<releaseNotes>Fixes a UTC date issue</releaseNotes>
     <copyright>Dan Booth</copyright>
     <licenseUrl>http://opensource.org/licenses/MIT</licenseUrl>
     <language>en-GB</language>
     <tags>umbraco umbraco7 developer audit log table logviewer</tags>
+	<iconUrl>https://www.diplo.co.uk/media/1143/auditlog.png</iconUrl>
     <dependencies>
       <dependency id="UmbracoCms.Core" version="7.4.0" />
     </dependencies>
