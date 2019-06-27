@@ -1,27 +1,53 @@
 # Diplo Umbraco.AuditLogViewer
 
-Diplo Audit Log Viewer for Umbraco CMS 8 allows you to easily view and search the audit data that is stored in the umbracoLog table in your site's database. This table contains all changes that are made to all content in your site (eg. Save, Publish, Delete events).
+**Diplo Audit Log Viewer** for **Umbraco CMS** (8 and above) allows you to easily view and search the Content changes and Audit data that is stored in your Umbraco 8 site's `umbracoLog` and `umbracoAudit` tables.
+
+It creates a custom tree within the **Settings** section that lets you view the contents of both those tables and presents the results in a filterbale, sortable and searchable paginated list.
 
 This log viewer allows you to view this data in an easy-to-use interface that integrates into the Umbraco Developer tree.
 
+## Versions ##
+
+This repo contains the latest v8 release in `Master`. For the old v7 version please use the `v7` branch.
+The current version in development will be in the `develop` branch.
+
 ## Features ##
+
+### Content Log Viewer ###
+
+The content log viewer allows you to view the log of changes to content within your Umbraco site. You can:
 
 - Filter log data by log type (Save, Publish, Delete etc)
 - Filter by user (ie. person responsible)
-- Filter by date or date range (ie. all audit events that occurred within a given period)
-- Filter by node (with easy to use content-picker)
+- Filter by date or date range (ie. all content changes that occurred within a given period)
+- Filter by page (node) - with easy to use content-picker
+- Sort data by any column
 - Search the log data comments by keyword
-- Handy quick filters for the more common audit tasks
-- Uses fast, server side pagination of data so it should be quick no matter how large your log table has become
-- Quick "edit" links to users and content
-- Slick, Angular interface that integrates with Umbraco developer tree
+- Handy quick filters for the more common filters
+- Quick "edit" links to affected content - whether it be a page in Umbraco, a Member or Content Type etc.
 
-Read more in my blog post - https://www.diplo.co.uk/blog/web-development/diplo-audit-log-viewer-for-umbraco/
+### Audit Trail Viewer ###
+
+The audit trail viewer allows you to view audit events, such as a user login or an edit to a user's profile. You can:
+
+- Filter the event data by event type (login, save etc)
+- Filter by the person responsible for the event
+- Filter by the person affected by the event (if relevant)
+- Filter by date range
+- Search the events by keyword
+- Sort data by any column
+- Quick filters for searching by date range
+
+Both use fast, server side pagination of data so it should be quick no matter how large your tables have become. You can sort the data via column, either ascending or descending.
+
+## Read More ##
+
+For screenshots and background information please check out my blog post: https://www.diplo.co.uk/blog/web-development/diplo-audit-log-viewer-for-umbraco-8/
 
 ## Releases ##
 
 > PM > Install-Package Diplo.AuditLogViewer
 
-NuGet Package: https://www.nuget.org/packages/Diplo.AuditLogViewer/
+**NuGet Package:** https://www.nuget.org/packages/Diplo.AuditLogViewer/
 
-Umbraco Package: https://our.umbraco.org/projects/developer-tools/diplo-audit-log-viewer/
+**Umbraco Package:** https://our.umbraco.org/projects/developer-tools/diplo-audit-log-viewer/
