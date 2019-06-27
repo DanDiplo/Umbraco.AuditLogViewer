@@ -1,6 +1,6 @@
 # Diplo Umbraco.AuditLogViewer
 
-Diplo Audit Log Viewer for Umbraco CMS (7.4 and above) allows you to easily view and search the audit data that is stored in the umbracoLog table in your site's database. This table contains all changes that are made to all content in your site (eg. Save, Publish, Delete events).
+Diplo Audit Log Viewer for Umbraco CMS 8 allows you to easily view and search the audit data that is stored in the umbracoLog table in your site's database. This table contains all changes that are made to all content in your site (eg. Save, Publish, Delete events).
 
 This log viewer allows you to view this data in an easy-to-use interface that integrates into the Umbraco Developer tree.
 

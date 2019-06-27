@@ -1,11 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Diplo.AuditLogViewer.Models
+﻿namespace Diplo.AuditLogViewer.Models
 {
+    /// <summary>
+    /// Represents the basic properties for a "user"
+    /// </summary>
     public class BasicUser
     {
         public int Id { get; set; }

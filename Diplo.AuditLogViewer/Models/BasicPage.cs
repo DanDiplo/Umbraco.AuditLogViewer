@@ -1,11 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Diplo.AuditLogViewer.Models
 {
+    /// <summary>
+    /// Represents the basic properties for a "page"
+    /// </summary>
     public class BasicPage
     {
         public int NodeId { get; set; }

@@ -1,10 +1,11 @@
-﻿{       
-    javascript: [
-		"~/App_Plugins/DiploAuditLogViewer/backoffice/diploAuditLog/Diplo.AuditLog.Resources.js",
-        "~/App_Plugins/DiploAuditLogViewer/backoffice/diploAuditLog/Diplo.AuditLog.Controller.js",
-		"~/App_Plugins/DiploAuditLogViewer/backoffice/diploAuditLog/Diplo.AuditLog.Detail.Controller.js"
-    ],
-	css: [
-		"~/App_Plugins/DiploAuditLogViewer/backoffice/diploauditlog/auditlog.css"
-	]
+﻿{
+  javascript: [
+    "~/App_Plugins/DiploAuditLogViewer/backoffice/diploContentLog/Diplo.ContentLog.Resources.js",
+    "~/App_Plugins/DiploAuditLogViewer/backoffice/diploContentLog/Diplo.ContentLog.Controller.js",
+    "~/App_Plugins/DiploAuditLogViewer/backoffice/diploAuditTrail/Diplo.AuditTrail.Controller.js",
+    "~/App_Plugins/DiploAuditLogViewer/backoffice/diploAuditTrail/Diplo.AuditTrail.Resources.js"
+  ],
+  css: [
+    "~/App_Plugins/DiploAuditLogViewer/backoffice/diploContentLog/auditlog.css"
+  ]
 }

@@ -1,42 +1,44 @@
-﻿<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <umbPackage>
   <info>
     <package>
       <name>Diplo Audit Log Viewer</name>
-      <version>1.0.4</version>
+      <version>2.0.0</version>
+      <iconUrl>https://www.diplo.co.uk/media/1176/diploauditlogviewericon.png</iconUrl>
       <license url="http://opensource.org/licenses/MIT">MIT License</license>
-      <url>https://www.diplo.co.uk/</url>
-      <requirements>
-        <major>7</major>
-        <minor>4</minor>
+      <url>https://www.diplo.co.uk/blog/web-development/diplo-audit-log-viewer-for-umbraco/</url>
+      <requirements type="Strict">
+        <major>8</major>
+        <minor>0</minor>
         <patch>0</patch>
       </requirements>
     </package>
     <author>
       <name>Dan Booth</name>
-      <website>https://www.diplo.co.uk/</website>
+      <website>https://www.diplo.co.uk</website>
     </author>
+    <contributors>
+      <contributor></contributor>
+    </contributors>
     <readme>
-      <![CDATA[
-Diplo Audit Log Viewer for Umbraco CMS (7.4 and above) allows you to easily view and search the audit data that is stored in the UmbracoLog table in your site's database. This table contains all changes that are made to all content in your site. This log viewer allows you to view this data in an easy-to-use interface that integrates into the Umbraco Developer tree.
+      <![CDATA[Diplo Audit Log Viewer for Umbraco CMS (8 and above) allows you to easily view and search the content and audit data that is stored in your Umbraco 8 site's umbracoLog and umbracoAudit tables.
 
-Features
---------
- * Filter log data by log type (Save, Publish, Delete etc)
- * Filter by user (ie. person responsible)
- * Filter by date or date range (ie. all audit events that occurred within a given period)
- * Filter by node (with easy to use content-picker)
- * Search the log data comments by keyword
- * Handy quick filters for the more common audit tasks
- * Uses fast, server side pagination of data so it should be quick no matter how large your log table has become
+It creates a custom tree within the Settings that lets you view the contents of both those tables and presents the results in a filterbale, sortable and searchable paginated list.
 
-Once installed check the Developer tree and you should see a new Audit Log tree there.
+      You can:
 
-Note: This has been tested with SQL Server and SQL CE but not MySQL. If you use MySQL and have issues let me know.
-        ]]>
+      * Filter log data by log type (Save, Publish, Delete etc)
+      * Filter by user (ie. person responsible)
+      * Filter by date or date range (ie. all audit events that occurred within a given period)
+      * Filter by node (with easy to use content-picker)
+      * Search the log data comments by keyword
+      * Handy quick filters for the more common audit tasks
+      * Uses fast, server side pagination of data so it should be quick no matter how large your table has become
+      * Quick "edit" links to affected content
+
+Note: Please use the 1.x version for Umbraco 7 sites.]]>
     </readme>
   </info>
-
   <DocumentTypes />
   <Templates />
   <Stylesheets />
@@ -44,11 +46,5 @@ Note: This has been tested with SQL Server and SQL CE but not MySQL. If you use 
   <DictionaryItems />
   <Languages />
   <DataTypes />
-
-  <Actions/>
-
-  <control />
-
-  <files />
-
+  <Actions />
 </umbPackage>

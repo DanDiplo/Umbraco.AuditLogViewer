@@ -2,35 +2,35 @@ using System.Reflection;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 
-// General Information about an assembly is controlled through the following 
+// General Information about an assembly is controlled through the following
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
 [assembly: AssemblyTitle("Diplo.AuditLogViewer")]
-[assembly: AssemblyDescription("Audit log viewer for Umbraco 7.4 >")]
+[assembly: AssemblyDescription("Audit and Content Log viewer for Umbraco 8")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("Diplodocus Squad")]
+[assembly: AssemblyCompany("")]
 [assembly: AssemblyProduct("Diplo.AuditLogViewer")]
-[assembly: AssemblyCopyright("Copyright ? Dan 'Diplo' Booth  2016")]
+[assembly: AssemblyCopyright("Copyright ? Dan Booth 2019")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
-// Setting ComVisible to false makes the types in this assembly not visible 
-// to COM components.  If you need to access a type in this assembly from 
+// Setting ComVisible to false makes the types in this assembly not visible
+// to COM components.  If you need to access a type in this assembly from
 // COM, set the ComVisible attribute to true on that type.
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("5b1ef1e0-64d7-4f4a-ac66-b3cfdf4453f9")]
+[assembly: Guid("7960770d-fff9-4332-a9f0-c3fd4b2728a9")]
 
 // Version information for an assembly consists of the following four values:
 //
 //      Major Version
-//      Minor Version 
+//      Minor Version
 //      Build Number
 //      Revision
 //
-// You can specify all the values or you can default the Build and Revision Numbers 
+// You can specify all the values or you can default the Build and Revision Numbers
 // by using the '*' as shown below:
-// [assembly: AssemblyVersion("1.0.4.0")]
-[assembly: AssemblyVersion("1.0.4.0")]
-[assembly: AssemblyFileVersion("1.0.4.0")]
+// [assembly: AssemblyVersion("2.0.0.0")]
+[assembly: AssemblyVersion("2.0.0.0")]
+[assembly: AssemblyFileVersion("2.0.0.0")]

@@ -1,14 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Diplo.AuditLogViewer.Models
 {
-    public class PagedLogEntryResult
+    /// <summary>
+    /// Represents a "page" of log entries
+    /// </summary>
+    /// <typeparam name="T">The type being pages</typeparam>
+    public class PagedLogEntryResult<T>
     {
-        public List<LogEntry> LogEntries { get; set; }
+        public List<T> LogEntries { get; set; }
 
         public long CurrentPage { get; set; }
 

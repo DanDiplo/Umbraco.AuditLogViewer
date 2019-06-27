@@ -3,27 +3,20 @@
 namespace Diplo.AuditLogViewer.Models
 {
     /// <summary>
-    /// Used to represent the criteria for searching the log table
+    /// Base class for search requests
     /// </summary>
-    public class LogSearchRequest
+    public abstract class SearchRequestBase
     {
-        public LogSearchRequest()
+        public SearchRequestBase()
         {
             this.ItemsPerPage = 50;
             this.PageNumber = 1;
-            this.SortColumn = "DateStamp";
             this.SortOrder = "asc";
         }
-
-        public string LogType { get; set; }
-
-        public string UserName { get; set; }
 
         public DateTime? DateFrom { get; set; }
 
         public DateTime? DateTo { get; set; }
-
-        public int? NodeId { get; set; }
 
         public int ItemsPerPage { get; set; }
 
