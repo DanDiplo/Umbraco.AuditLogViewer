@@ -83,14 +83,12 @@
       <ManifestFiles Include="$(BuildDir)\**\*" Exclude="$(BuildDir)\Package.xml" />
     </ItemGroup>
 
-    <!--
     <ManifestUpdate ManifestFile="$(BuildDir)\Package.xml"
 			WorkingDirectory="$(BuildDir)"
 			MinimumRequiredUmbracoVersion="$(MinUmbracoVersion)"
 			PackageVersion="$(ProductVersion)"
 			Files="@(ManifestFiles)" />
-      -->
-    
+
   </Target>
 
   <!-- MANIFEST FOR NUGET PACKAGE -->
