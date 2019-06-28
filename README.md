@@ -4,11 +4,9 @@
 
 It creates a custom tree within the **Settings** section that lets you view the contents of both those tables and presents the results in a filterbale, sortable and searchable paginated list.
 
-This log viewer allows you to view this data in an easy-to-use interface that integrates into the Umbraco Developer tree.
-
 ## Versions ##
 
-This repo contains the latest v8 release in `Master`. For the old v7 version please use the `v7` branch.
+This repo contains the latest v8 release in `master`. For the old v7 version please use the `v7` branch.
 The current version in development will be in the `develop` branch.
 
 ## Features ##
@@ -44,6 +42,8 @@ Both use fast, server side pagination of data so it should be quick no matter ho
 
 For screenshots and background information please check out my blog post: https://www.diplo.co.uk/blog/web-development/diplo-audit-log-viewer-for-umbraco-8/
 
+![content log](https://our.umbraco.com/media/wiki/156641/636972397690092741_contentlog-defaultpng.PNG)
+
 ## Releases ##
 
 > PM > Install-Package Diplo.AuditLogViewer
@@ -51,3 +51,5 @@ For screenshots and background information please check out my blog post: https:
 **NuGet Package:** https://www.nuget.org/packages/Diplo.AuditLogViewer/
 
 **Umbraco Package:** https://our.umbraco.org/projects/developer-tools/diplo-audit-log-viewer/
+
+For more information on v7 version [read this post](https://www.diplo.co.uk/blog/web-development/diplo-audit-log-viewer-for-umbraco/).
