@@ -26,7 +26,7 @@ angular.module('umbraco.resources').factory('diploAuditLogResources', function (
         },
         getEditUrl: function (entry) {
 
-            console.log(entry);
+            //console.log(entry);
 
             if (entry === null || entry.NodeId === 0)
                 return null;
