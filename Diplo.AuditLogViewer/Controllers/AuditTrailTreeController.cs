@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Net.Http.Formatting;
 using Diplo.AuditLogViewer.Services;
 using umbraco.BusinessLogic.Actions;
@@ -44,24 +42,12 @@ namespace Diplo.AuditLogViewer.Controllers
             {
                 tree.Add(CreateTreeNode("AuditTrail", id, qs, "Search Audit Trail", "icon-search"));
                 tree.Add(CreateTreeNode("TimePeriod", id, qs, "Time Period", "icon-folder", true));
-                //tree.Add(CreateTreeNode("LatestPages", id, qs, "Latest Pages", "icon-folder", true));
-                //tree.Add(CreateTreeNode("ActiveUsers", id, qs, "Active Users", "icon-folder", true));
             }
 
             if (id == "TimePeriod")
             {
                 this.AddDateRangeTree(tree, id, qs);
             }
-
-            //if (id == "LatestPages")
-            //{
-            //    this.AddLatestPagesTree(tree, id, qs);
-            //}
-
-            //if (id == "ActiveUsers")
-            //{
-            //    this.AddActiveUsersTree(tree, id, qs);
-            //}
 
             return tree;
         }
@@ -97,26 +83,6 @@ namespace Diplo.AuditLogViewer.Controllers
             tree.Add(AddDateRangeNode(id, qs, "Within 180 days", DateTime.Today.AddDays(-180), DateTime.Today));
             tree.Add(AddDateRangeNode(id, qs, "This year", DateTime.Today.AddYears(-1), DateTime.Today));
         }
-
-        //private void AddLatestPagesTree(TreeNodeCollection tree, string id, FormDataCollection qs)
-        //{
-        //    var latest = this.logService.GetLastUpdatedPages(10);
-
-        //    foreach (var item in latest)
-        //    {
-        //        tree.Add(CreateTreeNode("node:" + item.NodeId, id, qs, item.Title, item.Icon));
-        //    }
-        //}
-
-        //private void AddActiveUsersTree(TreeNodeCollection tree, string id, FormDataCollection qs)
-        //{
-        //    var paged = this.logService.GetMostActiveUsers(10, -30);
-
-        //    foreach (var item in paged.Items)
-        //    {
-        //        tree.Add(CreateTreeNode("user:" + item.Username, id, qs, item.Username, "icon-user"));
-        //    }
-        //}
 
         private TreeNode AddDateRangeNode(string id, FormDataCollection qs, string label, DateTime from, DateTime to)
         {
