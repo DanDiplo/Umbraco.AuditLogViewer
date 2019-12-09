@@ -102,7 +102,7 @@
                     </thead>
                     <tbody>
                         <tr ng-repeat="l in vm.logData" ng-class="{reveal: l.LogComment.length > 0}" ng-click="l.IsOpen = !l.IsOpen && l.LogComment.length > 0">
-                            <td title="{{l.EventDateUtc | date: 'medium'}}">{{l.EventDateUtc | date:'yyyy-MM-dd hh:mm:ss'}}<small>{{ l.EventDateUtc | date:'.sss' }}</small></td>
+                            <td title="{{l.EventDateUtc | date:'yyyy-MM-dd hh:mm:ss'}}">{{l.EventDateUtc | date: 'medium'}}<small>{{ l.EventDateUtc | date:'.sss' }}</small></td>
                             <td>{{l.PerformingDetails}}</td>
                             <td><code>{{l.PerformingIP}}</code></td>
                             <td>{{l.AffectedDetails}}</td>
