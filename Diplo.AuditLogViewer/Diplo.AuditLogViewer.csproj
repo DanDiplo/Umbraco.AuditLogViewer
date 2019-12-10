@@ -254,16 +254,23 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AuditSettings.cs" />
+    <Compile Include="Controllers\AuditTrailController.cs" />
     <Compile Include="Controllers\AuditLogController.cs" />
+    <Compile Include="Controllers\AuditTrailTreeController.cs" />
     <Compile Include="Controllers\AuditLogTreeController.cs" />
+    <Compile Include="Models\AuditEntry.cs" />
+    <Compile Include="Models\AuditLogSearchRequest.cs" />
     <Compile Include="Models\BasicPage.cs" />
     <Compile Include="Models\BasicUser.cs" />
     <Compile Include="Models\LogEntry.cs" />
     <Compile Include="Models\LogEntryDetail.cs" />
     <Compile Include="Models\LogSearchRequest.cs" />
     <Compile Include="Models\PagedLogEntryResult.cs" />
+    <Compile Include="Models\SearchRequestBase.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Services\LogService.cs" />
+    <Compile Include="Services\AuditLogService.cs" />
+    <Compile Include="Services\ContentLogService.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />

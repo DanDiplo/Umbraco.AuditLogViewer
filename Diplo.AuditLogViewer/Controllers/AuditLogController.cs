@@ -17,14 +17,14 @@ namespace Diplo.AuditLogViewer.Controllers
     [PluginController("AuditLogViewer")]
     public class AuditLogController : UmbracoAuthorizedJsonController
     {
-        private readonly LogService logService;
+        private readonly ContentLogService logService;
 
         /// <summary>
         /// Instantiate a new audit log controller and configure the log service with the Umbraco database
         /// </summary>
         public AuditLogController()
         {
-            this.logService = new LogService(UmbracoContext.Application.DatabaseContext.Database, UmbracoContext.Application.ApplicationCache.RuntimeCache);
+            this.logService = new ContentLogService(UmbracoContext.Application.DatabaseContext.Database, UmbracoContext.Application.ApplicationCache.RuntimeCache);
         }
 
         /// <summary>
@@ -42,7 +42,7 @@ namespace Diplo.AuditLogViewer.Controllers
         /// <param name="sortOrder">The sort order - either ascending or descending</param>
         /// <returns>A paged list of log data</returns>
         /// <remarks>/Umbraco/Backoffice/AuditLogViewer/AuditLog/GetLogData</remarks>
-        public PagedLogEntryResult GetLogData(string logType = null, string userName = null, DateTime? dateFrom = null, DateTime? dateTo = null, int? nodeId = null, int itemsPerPage = 50, int pageNumber = 1, string sortColumn = "DateStamp", string sortOrder = "asc", string searchTerm = null)
+        public PagedLogEntryResult<LogEntry> GetLogData(string logType = null, string userName = null, DateTime? dateFrom = null, DateTime? dateTo = null, int? nodeId = null, int itemsPerPage = 50, int pageNumber = 1, string sortColumn = "DateStamp", string sortOrder = "asc", string searchTerm = null)
         {
             var request = new LogSearchRequest()
             {
@@ -60,7 +60,7 @@ namespace Diplo.AuditLogViewer.Controllers
 
             var paged = this.logService.SearchAuditLog(request);
 
-            PagedLogEntryResult result = new PagedLogEntryResult()
+            var result = new PagedLogEntryResult<LogEntry>()
             {
                 CurrentPage = paged.CurrentPage,
                 ItemsPerPage = paged.ItemsPerPage,
