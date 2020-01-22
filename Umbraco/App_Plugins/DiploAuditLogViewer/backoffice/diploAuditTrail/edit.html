@@ -14,7 +14,7 @@
 
             <div class="umb-sub-header">
 
-                <form class="form-inline">
+                <form class="form-inline" ng-submit="vm.search()">
 
                     <div class="input-prepend">
                         <span class="add-on"><i class="icon-activity"></i></span>
@@ -39,9 +39,18 @@
 
                     <div class="input-prepend">
                         <span class="add-on"><i class="icon-search"></i></span>
-                        <input type="search" class="form-control input-medium" placeholder="Type to search..." ng-model="vm.criteria.searchTerm" ng-change="vm.search(vm.criteria.searchTerm)">
+                        <input type="search" class="form-control input-medium" placeholder="Search..." ng-model="vm.criteria.searchTerm">
                         <span class="add-on diplo-button delete" ng-show="vm.criteria.searchTerm" ng-click="vm.criteria.searchTerm = null; vm.logTypeChange()"><i class="icon-delete"></i></span>
                     </div>
+
+                    <umb-button
+                        action="vm.search()"
+                        type="button"
+                        button-style="success"
+                        state="vm.buttonState"
+                        label="Search"
+                        disabled="vm.buttonState !== 'init'">
+                    </umb-button>
 
                     <div class="pull-right">
                         <div class="input-prepend">
