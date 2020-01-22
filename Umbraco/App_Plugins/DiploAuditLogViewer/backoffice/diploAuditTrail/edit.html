@@ -1,13 +1,11 @@
 ﻿<div ng-controller="DiploAuditTrailEditController as vm">
-    
-    <umb-header>
 
+    <umb-header>
         <h1>
             <span class="umb-panel-header-name">Audit Trail Log Viewer</span>
         </h1>
         <p id="audit-log-intro">View, search and filter the Umbraco Audit table</p>
     </umb-header>
-
 
     <div class="umb-panel-body" id="auditLog">
         <div class="umb-pane">
@@ -43,13 +41,12 @@
                         <span class="add-on diplo-button delete" ng-show="vm.criteria.searchTerm" ng-click="vm.criteria.searchTerm = null; vm.logTypeChange()"><i class="icon-delete"></i></span>
                     </div>
 
-                    <umb-button
-                        action="vm.search()"
-                        type="button"
-                        button-style="success"
-                        state="vm.buttonState"
-                        label="Search"
-                        disabled="vm.buttonState !== 'init'">
+                    <umb-button action="vm.search()"
+                                type="button"
+                                button-style="success"
+                                state="vm.buttonState"
+                                label="Search"
+                                disabled="vm.buttonState !== 'init'">
                     </umb-button>
 
                     <div class="pull-right">

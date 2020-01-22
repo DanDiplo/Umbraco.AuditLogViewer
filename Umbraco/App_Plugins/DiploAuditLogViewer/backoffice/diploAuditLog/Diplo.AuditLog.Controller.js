@@ -140,39 +140,15 @@
                     template: '/App_Plugins/DiploAuditLogViewer/backoffice/diploAuditLog/detail.html',
                     dialogData: { entry: entry, items: data }, show: true, width: 800
                 });
-            }
+            };
 
             $scope.getEditUrl = function (entry) {
                 return diploAuditLogResources.getEditUrl(entry);
-            }
+            };
 
             getLogTypes();
 
             getUserNames(fetchData);
-
-            /*
-    
-            // Thanks to Daniel Bardi - https://our.umbraco.org/forum/umbraco-7/developing-umbraco-7-packages/48870-Make-selected-node-in-custom-tree-appear-selected#comment-221866
-            eventsService.on('appState.treeState.changed', function (event, args) {
-                if (args.key === 'selectedNode') {
-    
-                    function buildPath(node, path) {
-                        path.push(node.id);
-                        if (node.id === '-1') return path.reverse();
-                        var parent = node.parent();
-                        if (parent === undefined) return path;
-                        return buildPath(parent, path);
-                    }
-    
-                    event.currentScope.nav.syncTree({
-                        tree: $routeParams.tree,
-                        path: buildPath(args.value, []),
-                        forceReload: false
-                    });
-                }
-            });
-    
-            */
 
         });
 })();
