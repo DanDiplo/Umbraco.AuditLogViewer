@@ -41,7 +41,7 @@
                 </tr>
                 <tr>
                     <th>Node:</th>
-                    <td><span ng-show="logDetail.NodeId > 0"><small class="icon-out"></small> <a ng-href="{{getEditUrl()}}" target="_blank" title="Edit Node">{{logDetail.NodeId}}</a></span><span ng-show="logDetail.NodeId < 1">N/A</span></td>
+                    <td>{{logDetail.NodeId}}</td>
                 </tr>
                 <tr ng-show="logDetail.Name">
                     <th>Content:</th>

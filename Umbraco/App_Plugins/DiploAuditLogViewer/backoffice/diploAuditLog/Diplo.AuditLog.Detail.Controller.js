@@ -1,7 +1,7 @@
 ﻿(function () {
     'use strict';
 
-    function DiploAuditLogDetailController($scope, diploAuditLogResources, notificationsService, userService, dateHelper) {
+    angular.module("umbraco").controller("DiploAuditLogDetailController", function ($scope, diploAuditLogResources, notificationsService, userService, dateHelper) {
 
         $scope.logDetail = null;
         var id = $scope.dialogData.entry.Id;
@@ -42,6 +42,9 @@
         };
 
         $scope.getEditUrl = function () {
+
+            console.log($scope.dialogData.entry);
+
             return diploAuditLogResources.getEditUrl($scope.dialogData.entry);
         };
 
@@ -60,5 +63,5 @@
         }
 
         getLogDetail(id);
-    }
+    });
 })();
