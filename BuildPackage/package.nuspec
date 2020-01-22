@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
   <metadata>
     <id>Diplo.AuditLogViewer</id>
-    <version>1.1.0</version>
+    <version>1.1.1</version>
     <title>Audit Log viewer for Umbraco 7.10 or higher</title>
     <authors>Dan Booth</authors>
     <owners>Dan Booth</owners>
@@ -13,7 +13,7 @@
 
       Features
       --------
-      
+
       Content Log Viewer
       ------------------
       The content log viewer allows you to view the log of changes to content within your Umbraco site. You can:
@@ -26,7 +26,7 @@
       Search the log data comments by keyword
       Handy quick filters for the more common filters
       Quick "edit" links to affected content - whether it be a page in Umbraco, a Member or Content Type etc.
-      
+
       Audit Trail Viewer
       ------------------
       The audit trail viewer allows you to view audit events, such as a user login or an edit to a user's profile. You can:
@@ -48,15 +48,18 @@
     <summary>
       Diplo Audit Log Viewer for Umbraco CMS (7.10 and above) allows you to easily view and search the audit data that is stored by Umbraco regarding content changes in your site.
     </summary>
-    <releaseNotes>Fixes a UTC date issue</releaseNotes>
+    <releaseNotes>Improve performance of audit search by only triggering on button press (thx Vigan Shemsiu). Fixed content log detail not working. Oops.</releaseNotes>
     <copyright>Dan Booth</copyright>
     <license type="expression">MIT</license>
     <repository type="git" url="https://github.com/DanDiplo/Umbraco.AuditLogViewer/" />
     <language>en-GB</language>
     <tags>umbraco umbraco7 developer audit log table logviewer</tags>
-    <iconUrl>https://www.diplo.co.uk/media/1143/auditlog.png</iconUrl>
     <dependencies>
       <dependency id="UmbracoCms.Core" version="7.10.0" />
     </dependencies>
+    <icon>images\icon.png</icon>
   </metadata>
+  <files>
+    <file src="..\icon.png" target="images\" />
+  </files>
 </package>
