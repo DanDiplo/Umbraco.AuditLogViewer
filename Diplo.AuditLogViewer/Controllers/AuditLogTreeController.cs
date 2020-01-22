@@ -14,7 +14,7 @@ namespace Diplo.AuditLogViewer.Controllers
     /// Controller that controls generation of the audit log tree within the developer section
     /// </summary>
     [UmbracoApplicationAuthorize(Constants.Applications.Developer)]
-    [Tree(Constants.Applications.Developer, AuditSettings.ContentLogAlias, "Content Logs", sortOrder: 10)]
+    [Tree(Constants.Applications.Developer, AuditSettings.ContentLogAlias, "Content Logs", sortOrder: 12)]
     [PluginController(AuditSettings.PluginAreaName)]
     public class AuditLogTreeController : TreeController
     {
@@ -36,7 +36,7 @@ namespace Diplo.AuditLogViewer.Controllers
         /// <returns>A collection of tree nodes</returns>
         protected override TreeNodeCollection GetTreeNodes(string id, FormDataCollection qs)
         {
-            TreeNodeCollection tree = new TreeNodeCollection();
+            var tree = new TreeNodeCollection();
 
             if (id == Constants.System.Root.ToInvariantString())
             {

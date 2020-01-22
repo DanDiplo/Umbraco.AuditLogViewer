@@ -14,18 +14,15 @@ namespace Diplo.AuditLogViewer.Controllers
     /// Controller that controls generation of the audit log tree within the developer section
     /// </summary>
     [UmbracoApplicationAuthorize(Constants.Applications.Developer)]
-    [Tree(Constants.Applications.Developer, AuditSettings.AuditTrailAlias, "Audit Trail Logs", sortOrder: 11)]
+    [Tree(Constants.Applications.Developer, AuditSettings.AuditTrailAlias, "Audit Trail Logs", sortOrder: 13)]
     [PluginController(AuditSettings.PluginAreaName)]
     public class AuditTrailTreeController : TreeController
     {
-        private readonly ContentLogService logService;
-
         /// <summary>
         /// Instantaies the controller with the log service
         /// </summary>
         public AuditTrailTreeController()
         {
-            this.logService = new ContentLogService(UmbracoContext.Application.DatabaseContext.Database, UmbracoContext.Application.ApplicationCache.RuntimeCache);
         }
 
         /// <summary>

@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Diplo.AuditLogViewer.Models
+﻿namespace Diplo.AuditLogViewer.Models
 {
     /// <summary>
     /// Used to represent the criteria for searching the audit data table

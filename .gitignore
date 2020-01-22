@@ -36,3 +36,5 @@ obj/
 BuildPackage/Package/*
 .DiploAuditLogViewer.boltdata/*
 Umbraco/Bin/Diplo.AuditLogViewer.dll
+/BuildPackage/msbuild.binlog
+/Umbraco8Sql
