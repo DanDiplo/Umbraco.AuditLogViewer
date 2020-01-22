@@ -2,7 +2,7 @@
 // Thanks to  David Brendel for custom paging info - http://24days.in/umbraco/2015/custom-listview/
 
 angular.module("umbraco").controller("DiploAuditTrailEditController",
-    function ($scope, $routeParams, $route, dialogService, notificationsService, navigationService, eventsService, diploAuditTrailResources, userService, dateHelper) {
+function ($scope, $routeParams, $route, dialogService, $timeout,  notificationsService, navigationService, eventsService, diploAuditTrailResources, userService, dateHelper) {
         var vm = this;
 
         // Default values
@@ -11,6 +11,7 @@ angular.module("umbraco").controller("DiploAuditTrailEditController",
         vm.pageSizeList = [10, 20, 50, 100, 200, 500];
         vm.totalPages = 0;
         vm.logData = null;
+        vm.buttonState = 'init';
 
         vm.criteria = {
             currentPage: 1,
@@ -38,7 +39,7 @@ angular.module("umbraco").controller("DiploAuditTrailEditController",
             path.unshift("TimePeriod");
         }
 
-        navigationService.syncTree({ tree: $routeParams.tree, path: path , forceReload: false });
+        navigationService.syncTree({ tree: $routeParams.tree, path: path, forceReload: false });
 
         // Fetch the log data from the API endpoint
         function fetchData() {
@@ -52,9 +53,29 @@ angular.module("umbraco").controller("DiploAuditTrailEditController",
                     vm.rangeTo = (vm.criteria.itemsPerPage * (vm.criteria.currentPage - 1)) + vm.itemCount;
                     vm.rangeFrom = (vm.rangeTo - vm.itemCount) + 1;
                     vm.isLoading = false;
+
+                    if (!isButtonStateInitial()) {
+                        vm.buttonState = 'success';
+                        resetButtonState();
+                    }
                 }, function (response) {
                     notificationsService.error("Error", "Could not load audit log data.");
+
+                    if (!isButtonStateInitial()) {
+                        vm.buttonState ='error';
+                        resetButtonState();
+                    }
                 });
+        }
+
+        function isButtonStateInitial() {
+            return vm.buttonState === 'init';
+        }
+
+        function resetButtonState() {
+            $timeout(function () {
+                vm.buttonState = 'init';
+            }, 250);
         }
 
         // Get the event types list for the dropdown list filter
@@ -103,10 +124,12 @@ angular.module("umbraco").controller("DiploAuditTrailEditController",
             fetchData();
         };
 
-        // Log search
-        vm.search = function (searchFilter) {
-            vm.criteria.searchTerm = searchFilter;
-            vm.logTypeChange();
+        // Log search. Search only when buttonState is on initial state
+        vm.search = function () {
+            if (isButtonStateInitial()) {
+                vm.buttonState = 'busy';
+                vm.logTypeChange();
+            }
         };
 
         // Trigger change
