@@ -1,2 +1,2 @@
 Call nuget.exe restore ..\Diplo.AuditLogViewer.sln
-Call "C:\Program Files (x86)\MSBuild\14.0\Bin\MsBuild.exe" Package.build.xml /p:Configuration=Release
+Call "%programfiles(x86)%\Microsoft Visual Studio\2019\Community\MSBuild\Current\Bin\MSBuild.exe" package.build.xml /bl /p:Configuration=Release

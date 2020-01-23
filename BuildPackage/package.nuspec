@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
   <metadata>
     <id>Diplo.AuditLogViewer</id>
-    <version>1.1.1</version>
+    <version>1.1.2</version>
     <title>Audit Log viewer for Umbraco 7.10 or higher</title>
     <authors>Dan Booth</authors>
     <owners>Dan Booth</owners>
@@ -57,9 +57,5 @@
     <dependencies>
       <dependency id="UmbracoCms.Core" version="7.10.0" />
     </dependencies>
-    <icon>images\icon.png</icon>
   </metadata>
-  <files>
-    <file src="..\icon.png" target="images\" />
-  </files>
 </package>
