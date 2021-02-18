@@ -15,7 +15,7 @@
 
             <div id="auditLog">
 
-                <form class="form-inline">
+                <form class="form-inline" ng-submit="vm.search()">
 
                     <div class="input-prepend">
                         <label class="add-on" for="d-event-type" aria-label="Event Type" title="The type of event"><i class="icon-activity"></i></label>
@@ -40,9 +40,18 @@
 
                     <div class="input-prepend">
                         <label for="d-search-term" class="add-on" aria-label="Search logs" title="Search the audit trail"><i class="icon-search"></i></label>
-                        <input id="d-search-term" type="search" class="form-control input-medium" placeholder="Type to search..." ng-model="vm.criteria.searchTerm" ng-change="vm.search(vm.criteria.searchTerm)">
+                        <input id="d-search-term" type="search" class="form-control input-medium" placeholder="Search..." ng-keydown="$event.keyCode === 13 && vm.searchOnEnter($event)" ng-model="vm.criteria.searchTerm">
                         <span class="add-on btn" title="Clear" aria-label="Clear search" ng-show="vm.criteria.searchTerm" ng-click="vm.criteria.searchTerm = null; vm.logTypeChange()"><i class="icon-delete"></i></span>
                     </div>
+
+                    <umb-button
+                        action="vm.search()"
+                        type="button"
+                        button-style="success"
+                        state="vm.buttonState"
+                        label="Search"
+                        disabled="vm.buttonState !== 'init'">
+                    </umb-button>
 
                     <div class="pull-right">
                         <div class="input-prepend">

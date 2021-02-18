@@ -2,7 +2,7 @@
     'use strict';
 
     angular.module("umbraco").controller("DiploAuditLogEditController",
-        function ($routeParams, $route, notificationsService, navigationService, diploAuditTrailResources) {
+        function ($routeParams, $route, notificationsService, $timeout, navigationService, diploAuditTrailResources) {
             var vm = this;
 
             // Default values
@@ -11,6 +11,7 @@
             vm.pageSizeList = [10, 20, 50, 100, 200, 500];
             vm.totalPages = 0;
             vm.logData = null;
+            vm.buttonState = 'init';
 
             vm.criteria = {
                 currentPage: 1,
@@ -52,10 +53,30 @@
                         vm.rangeTo = (vm.criteria.itemsPerPage * (vm.criteria.currentPage - 1)) + vm.itemCount;
                         vm.rangeFrom = (vm.rangeTo - vm.itemCount) + 1;
                         vm.isLoading = false;
+
+                        if (!isButtonStateInitial()) {
+                            vm.buttonState = 'success';
+                            resetButtonState();
+                        }
                     }, function (response) {
                         notificationsService.error("Error", "Could not load audit log data.");
+
+                        if (!isButtonStateInitial()) {
+                            vm.buttonState ='error';
+                            resetButtonState();
+                        }
                     });
             }
+
+            function isButtonStateInitial() {
+                return vm.buttonState === 'init';
+            }
+
+            function resetButtonState() {
+                $timeout(function () {
+                    vm.buttonState = 'init';
+                }, 250);
+            } 
 
             // Get the event types list for the dropdown list filter
             function getEventTypes() {
@@ -103,11 +124,18 @@
                 fetchData();
             };
 
-            // Log search
-            vm.search = function (searchFilter) {
-                vm.criteria.searchTerm = searchFilter;
-                vm.logTypeChange();
+           // Log search
+            vm.search = function () {
+                if (isButtonStateInitial()) {
+                    vm.buttonState = 'busy';
+                    vm.logTypeChange();
+                }
             };
+
+            vm.searchOnEnter = function ($event) {
+                $event.preventDefault();
+                vm.search();
+            }
 
             // Trigger change
             vm.logTypeChange = function () {
