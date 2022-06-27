@@ -279,3 +279,4 @@ __pycache__/
 /Umbraco8Sql/Media/created-packages
 /BuildPackage/msbuild.binlog
 /.vs/config/applicationhost.config
+/screenshots
