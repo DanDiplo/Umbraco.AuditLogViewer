@@ -1,0 +1,10 @@
+﻿
+
+
+#auditLog tr.reveal {
+    cursor: pointer;
+}
+
+#auditLog small {
+    color: #aaa;
+}

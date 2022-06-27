@@ -1,0 +1,21 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <DiploAuditLogViewerContentFilesPath>$(MSBuildThisFileDirectory)..\App_Plugins\DiploAuditLogViewer\**\*.*</DiploAuditLogViewerContentFilesPath>
+    </PropertyGroup>
+
+    <Target Name="CopyDiploAuditLogViewerAssets" BeforeTargets="Build">
+        <ItemGroup>
+            <DiploAuditLogViewerContentFiles Include="$(DiploAuditLogViewerContentFilesPath)" />
+        </ItemGroup>
+        <Message Text="Copying Diplo.AuditLogViewer files: $(DiploAuditLogViewerContentFilesPath) - #@(DiploAuditLogViewerContentFiles->Count()) files" Importance="high" />
+        <Copy SourceFiles="@(DiploAuditLogViewerContentFiles)" DestinationFiles="@(DiploAuditLogViewerContentFiles->'$(MSBuildProjectDirectory)\App_Plugins\DiploAuditLogViewer\%(RecursiveDir)%(Filename)%(Extension)')" SkipUnchangedFiles="true" />
+    </Target>
+    
+    <Target Name="ClearDiploAuditLogViewerAssets" BeforeTargets="Clean">
+        <ItemGroup>
+            <DiploAuditLogViewerDir Include="$(MSBuildProjectDirectory)\App_Plugins\DiploAuditLogViewer\" />
+        </ItemGroup>
+        <Message Text="Clear old Diplo.AuditLogViewer data" Importance="high" />
+        <RemoveDir Directories="@(DiploAuditLogViewerDir)" />
+    </Target>
+</Project>
