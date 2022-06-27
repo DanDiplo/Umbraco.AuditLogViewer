@@ -1,2 +1,0 @@
-xcopy /y "$(ProjectDir)$(OutDir)$(TargetFileName)" "$(SolutionDir)\Umbraco\bin"
-xcopy /y "$(ProjectDir)$(OutDir)$(TargetName).pdb" "$(SolutionDir)\Umbraco\bin"
