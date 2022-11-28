@@ -1,0 +1,37 @@
+{
+  "Title": "Diplo Audit Log Viewer",
+  "AlternatePackageNames": [ "Umbraco Audit Log Viewer", "Umbraco.AuditLogViewer" ],
+  "AuthorDetails": {
+    "Name": "Dan 'Diplo' Booth",
+    "Description": "Dan is an Umbraco MVP and has been releasing packages for Umbraco since Umbraco 6",
+    "Url": "https://www.diplo.co.uk/",
+    "ImageUrl": "https://pbs.twimg.com/profile_images/794295655846002688/S8SQ_XFM_400x400.jpg"
+  },
+  "Category": "Developer Tools",
+  "Description": "Diplo Audit Log Viewer for Umbraco CMS allows you to easily view and search the Content changes and Audit data that is stored in your Umbraco site's umbracoLog and umbracoAudit tables. It creates a custom tree within the Settings section that lets you view the contents of both those tables and presents the results in a filterable, sortable and searchable paginated list.",
+  "DocumentationUrl": "https://github.com/DanDiplo/Umbraco.AuditLogViewer/blob/v10/README.md",
+  "LicenseTypes": [ "Free" ],
+  "IssueTrackerUrl": "https://github.com/DanDiplo/Umbraco.AuditLogViewer/issues",
+  "PackageType": "Package",
+  "PackagesByAuthor": [ "Diplo.GodMode", "Diplo.MediaDownloader", "Diplo.Translator", "Diplo.DictionaryEditor", "DiploTraceLogViewer" ],
+  "Tags": [
+    "logs",
+    "audit",
+    "changes",
+    "audit log",
+    "audit trail",
+    "change log"
+  ],
+  "Screenshots": [
+    {
+      "ImageUrl": "https://raw.githubusercontent.com/DanDiplo/Umbraco.AuditLogViewer/v10/Images/Screenshots/AuditLog-v10.PNG",
+      "Caption": "Audit Log Viewer"
+    },
+    {
+      "ImageUrl": "https://raw.githubusercontent.com/DanDiplo/Umbraco.AuditLogViewer/v10/Images/Screenshots/Content-Log-v10.PNG",
+      "Caption": "Content Log Viewer"
+    }
+  ]
+}
+
+// https://marketplace.umbraco.com/listing

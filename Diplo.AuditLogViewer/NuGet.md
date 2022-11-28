@@ -35,8 +35,10 @@ Both use fast, server side pagination of data so it should be quick no matter ho
 
 **Note:** The 10.x version is for Umbraco 10. The 8.x version is for Umbraco 8
 
-**More**: https://www.diplo.co.uk/blog/web-development/diplo-audit-log-viewer-for-umbraco-8/
+**More**: https://www.diplo.co.uk/blog/web-development/diplo-audit-log-viewer-for-umbraco-8/ and https://www.diplo.co.uk/blog/web-development/diplo-audit-log-viewer-for-umbraco-10/
 
 **Our**: https://our.umbraco.com/packages/developer-tools/diplo-audit-log-viewer/
+
+**Github**: https://github.com/DanDiplo/Umbraco.AuditLogViewer
 
 **Twitter**: https://twitter.com/DanDiplo

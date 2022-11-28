@@ -35,9 +35,11 @@ Both use fast, server side pagination of data so it should be quick no matter ho
 
 ## Read More
 
-For more screenshots and background information please check out my blog post: 
+For more screenshots and background information please check out my blog posts: 
 
-https://www.diplo.co.uk/blog/web-development/diplo-audit-log-viewer-for-umbraco-8/
+* https://www.diplo.co.uk/blog/web-development/diplo-audit-log-viewer-for-umbraco-8/
+
+* https://www.diplo.co.uk/blog/web-development/diplo-audit-log-viewer-for-umbraco-10/
 
 **Twitter:** https://twitter.com/DanDiplo
 
