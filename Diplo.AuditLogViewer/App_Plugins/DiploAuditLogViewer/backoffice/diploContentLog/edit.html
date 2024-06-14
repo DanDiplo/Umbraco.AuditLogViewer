@@ -44,6 +44,13 @@
                         <span class="add-on btn" title="Clear" aria-label="Clear node" ng-show="vm.criteria.nodeId" ng-click="vm.criteria.nodeId = null; vm.logTypeChange()"><span class="icon-delete"></span></span>
                     </div>
 
+                    <umb-button action="vm.exportToCSV()"
+                                type="button"
+                                button-style="success"
+                                label="Log Export"
+                                ng-show="vm.logData.length > 0">
+                    </umb-button>
+
                     <div class="pull-right">
                         <div class="input-prepend">
                             <label for="al-from-date" class="add-on" aria-label="From Date"><i class="icon-calendar-alt"></i> From</label>

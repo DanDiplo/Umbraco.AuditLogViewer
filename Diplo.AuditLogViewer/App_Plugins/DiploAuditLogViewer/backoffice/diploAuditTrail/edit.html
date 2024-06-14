@@ -51,7 +51,12 @@
                                 label="Search"
                                 disabled="vm.buttonState !== 'init'">
                     </umb-button>
-
+                    <umb-button action="vm.exportToCSV()"
+                                type="button"
+                                button-style="success"
+                                label="Log Export"
+                                ng-show="vm.logData.length > 0">
+                    </umb-button>
                     <div class="pull-right">
                         <div class="input-prepend">
                             <label for="d-from-date" class="add-on" aria-label="From Date"><i class="icon-calendar-alt"></i> From</label>

@@ -90,6 +90,48 @@
                 });
             }
 
+            // Export
+            // Helper function to replace commas with dashes
+            function replaceCommaWithDash(value) {
+                if (typeof value === 'string') {
+                    return value.replace(/,/g, '-');
+                }
+                return value;
+            }         
+
+            vm.exportToCSV = function () {
+                // Prepare CSV data
+                let csvContent = "data:text/csv;charset=utf-8,";
+
+                csvContent += "Date, User, Action, Node, Content, Type \n"; // Header row
+
+                vm.logData.forEach(function (row) {
+                    var rowArray = [
+                        new Date(row.DateStamp).toLocaleString(),
+                        row.UserName,
+                        row.LogHeader,
+                        row.NodeId,
+                        row.Text,
+                        row.TypeDesc
+                    ];
+
+                    // Replace commas with dashes in each field
+                    rowArray = rowArray.map(replaceCommaWithDash);
+                    csvContent += rowArray.join(",") + "\n";
+                });
+
+                // Create a download link and trigger a download
+                var encodedUri = encodeURI(csvContent);
+                var timestamp = getFormattedTimestamp();
+                var filename = `content_log.csv`;
+                var link = document.createElement("a");
+                link.setAttribute("href", encodedUri);
+                link.setAttribute("download", filename);
+                document.body.appendChild(link);
+                link.click();
+                document.body.removeChild(link);
+            };
+
             // Used to order
             vm.order = function (sort) {
                 vm.criteria.reverse = (vm.criteria.sort === sort) ? !vm.criteria.reverse : false;
