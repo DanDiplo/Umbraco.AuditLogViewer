@@ -11,6 +11,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Info", "Info", "{6B49802D-7
 		..\umbraco-marketplace.json = ..\umbraco-marketplace.json
 	EndProjectSection
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Diplo.AuditLogViewer.Testsite", "..\Diplo.AuditLogViewer.Testsite\Diplo.AuditLogViewer.Testsite.csproj", "{B7F749FC-67B3-47F2-98B7-51EF59EAB181}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{02D22453-2936-41E7-B3BC-02050D7123B8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{02D22453-2936-41E7-B3BC-02050D7123B8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{02D22453-2936-41E7-B3BC-02050D7123B8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B7F749FC-67B3-47F2-98B7-51EF59EAB181}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B7F749FC-67B3-47F2-98B7-51EF59EAB181}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B7F749FC-67B3-47F2-98B7-51EF59EAB181}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B7F749FC-67B3-47F2-98B7-51EF59EAB181}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

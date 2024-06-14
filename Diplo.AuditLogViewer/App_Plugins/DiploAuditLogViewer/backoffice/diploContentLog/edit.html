@@ -105,7 +105,7 @@
                         </thead>
                         <tbody>
                             <tr ng-repeat-start="l in vm.logData" ng-class="{reveal: l.LogComment.length > 0}" ng-click="l.IsOpen = !l.IsOpen && l.LogComment.length > 0">
-                                <td title="{{l.DateStamp | date: 'medium'}}">{{l.DateStamp | date:'yyyy-MM-dd hh:mm:ss'}}<small>{{ l.DateStamp | date:'.sss' }}</small></td>
+                                <td title="{{l.DateStamp}}">{{l.DateStamp | date:'yyyy-MM-dd hh:mm:ss'}}<small>{{ l.DateStamp | date:'.sss' }}</small></td>
                                 <td>{{l.UserName}}</td>
                                 <td>{{l.LogHeader}} <span class="icon-eye" ng-if="l.LogComment.length > 0"></span></td>
                                 <td><span ng-show="l.NodeId > 0"><a ng-href="{{vm.getEditUrl(l)}}" title="Edit" target="_blank">{{l.NodeId}}</a></span></td>
