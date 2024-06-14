@@ -106,7 +106,7 @@
                 csvContent += "Date, User, Action, Node, Content, Type \n"; // Header row
 
                 vm.logData.forEach(function (row) {
-                    var rowArray = [
+                    let rowArray = [
                         new Date(row.DateStamp).toLocaleString(),
                         row.UserName,
                         row.LogHeader,
@@ -121,10 +121,9 @@
                 });
 
                 // Create a download link and trigger a download
-                var encodedUri = encodeURI(csvContent);
-                var timestamp = getFormattedTimestamp();
-                var filename = `content_log.csv`;
-                var link = document.createElement("a");
+                const encodedUri = encodeURI(csvContent);
+                const filename = `content_log.csv`;
+                const link = document.createElement("a");
                 link.setAttribute("href", encodedUri);
                 link.setAttribute("download", filename);
                 document.body.appendChild(link);

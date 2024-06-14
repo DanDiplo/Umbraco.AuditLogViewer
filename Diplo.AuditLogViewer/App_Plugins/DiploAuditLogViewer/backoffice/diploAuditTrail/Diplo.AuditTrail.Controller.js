@@ -62,7 +62,7 @@
                         notificationsService.error("Error", "Could not load audit log data.");
 
                         if (!isButtonStateInitial()) {
-                            vm.buttonState ='error';
+                            vm.buttonState = 'error';
                             resetButtonState();
                         }
                     });
@@ -76,7 +76,7 @@
                 $timeout(function () {
                     vm.buttonState = 'init';
                 }, 250);
-            } 
+            }
 
             // Get the event types list for the dropdown list filter
             function getEventTypes() {
@@ -124,7 +124,7 @@
                 fetchData();
             };
 
-           // Log search
+            // Log search
             vm.search = function () {
                 if (isButtonStateInitial()) {
                     vm.buttonState = 'busy';
@@ -161,7 +161,7 @@
                     return value.replace(/,/g, '-');
                 }
                 return value;
-            }            
+            }
             vm.exportToCSV = function () {
                 // Prepare CSV data
                 let csvContent = "data:text/csv;charset=utf-8,";
@@ -174,6 +174,7 @@
                         row.PerformingDetails,
                         row.PerformingIP,
                         row.AffectedDetails,
+                        row.AffectedDetails,
                         row.EventType,
                         row.EventDetails
                     ];
@@ -184,10 +185,9 @@
                 });
 
                 // Create a download link and trigger a download
-                var encodedUri = encodeURI(csvContent);
-                var timestamp = getFormattedTimestamp();
-                var filename = `audit_log.csv`;
-                var link = document.createElement("a");
+                const encodedUri = encodeURI(csvContent);
+                const filename = `audit_log.csv`;
+                const link = document.createElement("a");
                 link.setAttribute("href", encodedUri);
                 link.setAttribute("download", filename);
                 document.body.appendChild(link);

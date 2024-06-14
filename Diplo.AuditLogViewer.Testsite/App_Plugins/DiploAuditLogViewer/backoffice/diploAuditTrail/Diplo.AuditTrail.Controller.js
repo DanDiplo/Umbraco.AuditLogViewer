@@ -62,7 +62,7 @@
                         notificationsService.error("Error", "Could not load audit log data.");
 
                         if (!isButtonStateInitial()) {
-                            vm.buttonState ='error';
+                            vm.buttonState = 'error';
                             resetButtonState();
                         }
                     });
@@ -76,7 +76,7 @@
                 $timeout(function () {
                     vm.buttonState = 'init';
                 }, 250);
-            } 
+            }
 
             // Get the event types list for the dropdown list filter
             function getEventTypes() {
@@ -124,7 +124,7 @@
                 fetchData();
             };
 
-           // Log search
+            // Log search
             vm.search = function () {
                 if (isButtonStateInitial()) {
                     vm.buttonState = 'busy';
@@ -152,6 +152,47 @@
                 );
 
                 $route.reload();
+            };
+
+            // Export
+            // Helper function to replace commas with dashes
+            function replaceCommaWithDash(value) {
+                if (typeof value === 'string') {
+                    return value.replace(/,/g, '-');
+                }
+                return value;
+            }
+            vm.exportToCSV = function () {
+                // Prepare CSV data
+                let csvContent = "data:text/csv;charset=utf-8,";
+                let header = ["Date", "Performer", "IP", "Affected", "Event", "Details"];
+                csvContent += header.join(",") + "\n";
+
+                vm.logData.forEach(function (row) {
+                    let rowArray = [
+                        new Date(row.EventDateUtc).toLocaleString(),
+                        row.PerformingDetails,
+                        row.PerformingIP,
+                        row.AffectedDetails,
+                        row.AffectedDetails,
+                        row.EventType,
+                        row.EventDetails
+                    ];
+
+                    // Replace commas with dashes in each field
+                    rowArray = rowArray.map(replaceCommaWithDash);
+                    csvContent += rowArray.join(",") + "\n";
+                });
+
+                // Create a download link and trigger a download
+                const encodedUri = encodeURI(csvContent);
+                const filename = `audit_log.csv`;
+                const link = document.createElement("a");
+                link.setAttribute("href", encodedUri);
+                link.setAttribute("download", filename);
+                document.body.appendChild(link);
+                link.click();
+                document.body.removeChild(link);
             };
 
             // Run

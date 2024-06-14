@@ -2,14 +2,22 @@
 
     <umb-editor-view footer="false">
 
-        <umb-editor-header name="'Audit Log Viewer'"
-                           name-locked="true"
-                           on-back=""
-                           show-back-button="false"
-                           hide-icon="true"
-                           hide-description="true"
-                           hide-alias="true">
-        </umb-editor-header>
+        <div class="umb-editor-header">
+            <div class="flex items-center" style="height: 100%">
+
+                <div class="flex items-center" style="flex: 1;">
+                    <div class="umb-panel-header-icon" title="Diplo Audit Log Viewer">
+                        <i class="icon-server"></i>
+                    </div>
+                    <div class="umb-panel-header-name">Audit Log Viewer</div>
+                </div>
+
+                <div class="pull-right" style="position: relative; padding-inline-end:20px">
+                    <umb-button action="vm.exportToCSV()" type="button" button-style="primary" label="Export Log " ng-show="vm.logData.length > 0" title="Export current log to CSV file">
+                    </umb-button>
+                </div>
+            </div>
+        </div>
 
         <umb-editor-container>
 
@@ -51,12 +59,7 @@
                                 label="Search"
                                 disabled="vm.buttonState !== 'init'">
                     </umb-button>
-                    <umb-button action="vm.exportToCSV()"
-                                type="button"
-                                button-style="success"
-                                label="Log Export"
-                                ng-show="vm.logData.length > 0">
-                    </umb-button>
+
                     <div class="pull-right">
                         <div class="input-prepend">
                             <label for="d-from-date" class="add-on" aria-label="From Date"><i class="icon-calendar-alt"></i> From</label>
