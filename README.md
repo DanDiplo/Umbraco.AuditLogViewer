@@ -18,6 +18,7 @@ The content log viewer allows you to view the log of changes to content within y
 - Search the log data comments by keyword
 - Handy quick filters for the more common filters
 - Quick "edit" links to affected content - whether it be a page in Umbraco, a Member or Content Type etc.
+- Export current log to CSV (thanks, [s4net](https://github.com/s4net))
 
 ### Audit Trail Viewer
 
@@ -30,6 +31,7 @@ The audit trail viewer allows you to view audit events, such as a user login or 
 - Search the events by keyword
 - Sort data by any column
 - Quick filters for searching by date range
+- Export current log to CSV (thanks, [s4net](https://github.com/s4net))
 
 Both use fast, server side pagination of data so it should be quick no matter how large your tables have become. You can sort the data via column, either ascending or descending.
 

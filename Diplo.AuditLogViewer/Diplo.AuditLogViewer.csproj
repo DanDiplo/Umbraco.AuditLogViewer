@@ -8,7 +8,7 @@
     <Description>Audit and Content Log viewer for Umbraco CMS</Description>
     <PackageTags>umbraco plugin package audit log viewer umbraco-marketplace</PackageTags>
     <Version>$(VersionPrefix)</Version>
-	  <VersionPrefix>10.0.1</VersionPrefix>
+	  <VersionPrefix>10.1.0</VersionPrefix>
 	  <Company>$(Authors)</Company>
 	  <Copyright>Dan 'Diplo' Booth</Copyright>
 	  <Authors>DanDiplo</Authors>

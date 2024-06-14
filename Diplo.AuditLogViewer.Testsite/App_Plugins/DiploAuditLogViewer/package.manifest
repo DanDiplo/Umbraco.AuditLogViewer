@@ -1,6 +1,6 @@
 ﻿{
   "name": "Diplo.AuditLogViewer",
-  "version": "10.0.1",
+  "version": "10.1.0",
   "allowPackageTelemetry": true,
   "javascript": [
     "~/App_Plugins/DiploAuditLogViewer/backoffice/diploContentLog/Diplo.ContentLog.Resources.js",
