@@ -1,91 +1,100 @@
-# Diplo Umbraco Audit Log Viewer
+# Diplo Audit Log Viewer for Umbraco 17
 
-**Diplo Audit Log Viewer** for **Umbraco CMS** allows you to easily view and search the Content changes and Audit data that is stored in your Umbraco site's `umbracoLog` and `umbracoAudit` tables.
+**Diplo Audit Log Viewer** lets Umbraco backoffice users inspect and search the data stored in Umbraco's `umbracoLog` and `umbracoAudit` tables.
 
-It creates a custom tree within the **Settings** section that lets you view the contents of both those tables and presents the results in a filterable, sortable and searchable paginated list.
+This version targets **Umbraco 17** and **.NET 10**. The legacy AngularJS/tree implementation has been replaced with a Lit + TypeScript backoffice extension registered via `umbraco-package.json`.
 
-## Features
+## Backoffice
 
-### Content Log Viewer
+The package appears in the **Settings** section as **Audit Log Viewer** with two workspaces:
 
-The content log viewer allows you to view the log of changes to content within your Umbraco site. You can:
+- **Content Log**
+- **Audit Trail**
 
-- Filter log data by log type (Save, Publish, Delete etc)
-- Filter by user (ie. person responsible)
-- Filter by date or date range (ie. all content changes that occurred within a given period)
-- Filter by page (node) - with easy to use content-picker
-- Sort data by any column
-- Search the log data comments by keyword
-- Handy quick filters for the more common filters
-- Quick "edit" links to affected content - whether it be a page in Umbraco, a Member or Content Type etc.
-- Export current log to CSV (thanks, [s4net](https://github.com/s4net))
+Both views use server-side paging, searching, sorting, and filtering.
 
-### Audit Trail Viewer
+## Content Log
 
-The audit trail viewer allows you to view audit events, such as a user login or an edit to a user's profile. You can:
+The Content Log view shows records from `umbracoLog`.
 
-- Filter the event data by event type (login, save etc)
-- Filter by the person responsible for the event
-- Filter by the person affected by the event (if relevant)
-- Filter by date range
-- Search the events by keyword
-- Sort data by any column
-- Quick filters for searching by date range
-- Export current log to CSV (thanks, [s4net](https://github.com/s4net))
+Features include:
 
-Both use fast, server side pagination of data so it should be quick no matter how large your tables have become. You can sort the data via column, either ascending or descending.
+- Filter by log action, entity type, user, node, search term, date range, and date presets.
+- Search nodes by name with autocomplete, while still allowing direct numeric node id entry.
+- Open logged entities in an Umbraco side workspace where supported.
+- Contextual node opening for documents, media, members, document types, data types, templates, and partial views.
+- Display whether a logged node still exists.
+- Expanded row details for comments, parameters, entity type, node key, document type, and status.
+- Optional CSV export of the current page or all matching rows.
 
-## Read More
+## Audit Trail
 
-For more screenshots and background information please check out my blog posts: 
+The Audit Trail view shows records from `umbracoAudit`.
 
-* https://www.diplo.co.uk/blog/web-development/diplo-audit-log-viewer-for-umbraco-8/
+Features include:
 
-* https://www.diplo.co.uk/blog/web-development/diplo-audit-log-viewer-for-umbraco-10/
+- Filter by event type, performer, affected user, performer IP, search term, date range, and date presets.
+- Expanded row details for performer, affected user, stable user keys, IP address, event type, and event details.
+- Optional CSV export of the current page or all matching rows.
 
-**Twitter:** https://twitter.com/DanDiplo
+## Configuration
 
-### Screenshots
+CSV export is enabled by default. It can be hidden from the backoffice UI with appsettings:
 
-![content log](https://our.umbraco.com/media/wiki/156641/636972397690092741_contentlog-defaultpng.PNG)
+```json
+{
+  "AuditLogViewer": {
+    "DisableExport": false
+  }
+}
+```
 
-![audit log](https://our.umbraco.com/media/wiki/156641/636972397889191665_auditlog-memberpng.PNG)
+Set `DisableExport` to `true` to remove the export buttons from both views.
 
-## Versions
+## API
 
-This repo contains the latest v10 release in `v10`.
+The backoffice uses Umbraco's Management API under:
 
-For Umbraco 9 I recommend you update to Umbraco 10 and use `v10` version.
+`/umbraco/management/api/v1/audit-log-viewer`
 
-For the older v8 version please use the `v8` branch.
+Endpoints:
 
-For the old v7 version please use the `v7` branch.
+- `GET /settings`
+- `GET /content-log`
+- `GET /content-log/types`
+- `GET /content-log/users`
+- `GET /content-log/entity-types`
+- `GET /content-log/nodes`
+- `GET /audit-trail`
+- `GET /audit-trail/event-types`
+- `GET /audit-trail/users`
 
-For more information on v7 version [read this post](https://www.diplo.co.uk/blog/web-development/diplo-audit-log-viewer-for-umbraco/).
+All endpoints require Settings-section backoffice access.
 
-## Releases
+## Development
 
-**NuGet Package:** https://www.nuget.org/packages/Diplo.AuditLogViewer/
+The package project is `Diplo.AuditLogViewer` and the local Umbraco 17 test bed is `Diplo.AuditLogViewer.Testsite`.
 
-**Umbraco Package:** https://our.umbraco.org/projects/developer-tools/diplo-audit-log-viewer/
+Useful commands:
 
-## Building / Developing
-The v10 repository comes with two solutions:
+```powershell
+dotnet build Diplo.AuditLogViewer\Diplo.AuditLogViewer.csproj /p:UseAppHost=false
+```
 
-`Diplo.AuditLogViewer` - this is the Umbraco plugin source code.
+```powershell
+cd Diplo.AuditLogViewer\Client
+npm run type-check
+npm run build
+```
 
-`Diplo.AuditLogViewer.TestSite` - this is a demo Umbraco 10 site that can be used to view and test the plugin.
+The client builds to:
 
-After first cloning the code, open a command line prompt within the `Diplo.AuditLogViewer.TestSite` folder and type: `dotnet restore`
+`Diplo.AuditLogViewer/wwwroot/App_Plugins/DiploAuditLogViewer`
 
-You should then be able to run the test site.
+## Notes
 
-### Test Site Logins
-
-You can login to the test site backend using the following credentials:
-
-**username:** `test@example.com`
-
-**password:** `DiploAuditLogViewer!`
-
+- This package intentionally queries Umbraco's own log tables directly.
+- Sort fields are whitelisted server-side.
+- Date `To` filters are treated inclusively by adding one day server-side.
+- Built assets are shipped via static web assets; legacy `package.manifest` and AngularJS files are not used.
 

@@ -18,11 +18,21 @@ namespace Diplo.AuditLogViewer.Services
 
         public Page<AuditEntry> SearchLog(AuditLogSearchRequest request)
         {
-            const string sqlBase = @"SELECT id, performingUserId, performingDetails, performingIp, eventDateUtc, affectedUserId, affectedDetails, eventType, eventDetails
+            const string sqlBase = @"SELECT id, performingUserId, performingUserKey, performingDetails, performingIp, eventDateUtc, affectedUserId, affectedUserKey, affectedDetails, eventType, eventDetails
                                     FROM umbracoAudit WHERE 1 = 1 ";
 
             using (var scope = this.scopeProvider.CreateScope(autoComplete: true))
             {
+                if (!IsValidOrderByParameter(request.SortColumn))
+                {
+                    throw new ArgumentOutOfRangeException(nameof(request.SortColumn), "The order by value '" + request.SortColumn + "' is not a valid sort parameter.");
+                }
+
+                if (!IsValidOrderByDirectionParameter(request.SortOrder))
+                {
+                    throw new ArgumentOutOfRangeException(nameof(request.SortOrder), "The order by value '" + request.SortOrder + "' is not a valid sort order.");
+                }
+
                 var query = scope.SqlContext.Sql(sqlBase);
 
                 if (request.AffectedUserId.HasValue)
@@ -38,6 +48,11 @@ namespace Diplo.AuditLogViewer.Services
                 if (!string.IsNullOrEmpty(request.EventType))
                 {
                     query = query.Append(" AND eventType = @0", request.EventType);
+                }
+
+                if (!string.IsNullOrEmpty(request.PerformingIp))
+                {
+                    query = query.Append(" AND performingIp LIKE @0", "%" + request.PerformingIp + "%");
                 }
 
                 if (request.DateFrom.HasValue)

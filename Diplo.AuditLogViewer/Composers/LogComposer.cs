@@ -12,6 +12,8 @@ namespace Diplo.AuditLogViewer.Composers
     {
         public void Compose(IUmbracoBuilder builder)
         {
+            builder.Services.Configure<AuditLogViewerOptions>(builder.Config.GetSection(AuditSettings.ConfigSectionName));
+
             builder.Services.AddScoped<IContentLogService, ContentLogService>();
             builder.Services.AddScoped<IAuditLogService, AuditLogService>();
         }

@@ -9,10 +9,10 @@ namespace Diplo.AuditLogViewer.Models
     {
         public int NodeId { get; set; }
 
-        public string Title { get; set; }
+        public string Title { get; set; } = string.Empty;
 
         public DateTime UpdateDate { get; set; }
 
-        public string Icon { get; set; }
+        public string Icon { get; set; } = string.Empty;
     }
 }

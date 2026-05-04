@@ -1,46 +1,36 @@
-# Diplo Umbraco Audit & Content Log Viewer
+# Diplo Audit Log Viewer for Umbraco 17
 
-**Diplo Audit Log Viewer** for **Umbraco CMS** allows you to easily view and search the Content changes and Audit data that is stored in your Umbraco site's `umbracoLog` and `umbracoAudit` tables.
+View, search, filter, sort, and export Umbraco content log and audit trail data from the Settings section.
 
-It creates a custom tree within the **Settings** section that lets you view the contents of both those tables and presents the results in a filterable, sortable and searchable paginated list.
+This version targets **Umbraco 17** and **.NET 10**. It uses the modern Umbraco backoffice extension model with Lit, TypeScript, Vite, `umbraco-package.json`, Management API controllers, and static web assets.
 
 ## Features
 
-### Content Log Viewer
+- Content Log viewer for `umbracoLog`.
+- Audit Trail viewer for `umbracoAudit`.
+- Server-side pagination, filtering, sorting, and searching.
+- Date preset filters such as Today, Yesterday, Last 7 days, Last 30 days, This month, and Previous month.
+- Friendly node search with autocomplete and direct numeric id fallback.
+- Contextual side-workspace links for supported logged entities.
+- Expanded row detail drawers for technical values such as parameters, entity type, node key, user keys, IP address, and event details.
+- CSV export for current page or all matching rows.
+- Optional appsettings switch to hide export controls.
 
-The content log viewer allows you to view the log of changes to content within your Umbraco site. You can:
+## Configuration
 
-- Filter log data by log type (Save, Publish, Delete etc)
-- Filter by user (ie. person responsible)
-- Filter by date or date range (ie. all content changes that occurred within a given period)
-- Filter by page (node) - with easy to use content-picker
-- Sort data by any column
-- Search the log data comments by keyword
-- Handy quick filters for the more common filters
-- Quick "edit" links to affected content - whether it be a page in Umbraco, a Member or Content Type etc.
-- Export current log to CSV
+```json
+{
+  "AuditLogViewer": {
+    "DisableExport": false
+  }
+}
+```
 
-### Audit Trail Viewer
+Set `DisableExport` to `true` to remove CSV export controls from the backoffice UI.
 
-The audit trail viewer allows you to view audit events, such as a user login or an edit to a user's profile. You can:
+## Compatibility
 
-- Filter the event data by event type (login, save etc)
-- Filter by the person responsible for the event
-- Filter by the person affected by the event (if relevant)
-- Filter by date range
-- Search the events by keyword
-- Sort data by any column
-- Quick filters for searching by date range
-- Export current log to CSV
+- Umbraco CMS 17
+- .NET 10
 
-Both use fast, server side pagination of data so it should be quick no matter how large your tables have become. You can sort the data via column, either ascending or descending.
-
-**Note:** The 10.x version is for Umbraco 10. The 8.x version is for Umbraco 8
-
-**More**: https://www.diplo.co.uk/blog/web-development/diplo-audit-log-viewer-for-umbraco-8/ and https://www.diplo.co.uk/blog/web-development/diplo-audit-log-viewer-for-umbraco-10/
-
-**Our**: https://our.umbraco.com/packages/developer-tools/diplo-audit-log-viewer/
-
-**Github**: https://github.com/DanDiplo/Umbraco.AuditLogViewer
-
-**Twitter**: https://twitter.com/DanDiplo
+Older Umbraco versions should use the corresponding older package releases.

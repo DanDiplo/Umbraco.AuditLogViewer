@@ -16,6 +16,8 @@ namespace Diplo.AuditLogViewer.Models
 
         public int? AffectedUserId { get; set; }
 
-        public string EventType { get; set; }
+        public string? EventType { get; set; }
+
+        public string? PerformingIp { get; set; }
     }
 }

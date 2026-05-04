@@ -14,14 +14,24 @@ namespace Diplo.AuditLogViewer.Models
         public int Id { get; set; }
 
         /// <summary>
+        /// Gets or sets the unique key of the content node.
+        /// </summary>
+        public Guid? UniqueId { get; set; }
+
+        /// <summary>
+        /// Gets or sets whether the logged node still exists in the node table.
+        /// </summary>
+        public bool NodeExists { get; set; }
+
+        /// <summary>
         /// Gets or sets the text name.
         /// </summary>
-        public string Text { get; set; }
+        public string? Text { get; set; }
 
         /// <summary>
         /// Gets or sets the name of the user.
         /// </summary>
-        public string UserName { get; set; }
+        public string? UserName { get; set; }
 
         /// <summary>
         /// Gets or sets the date stamp.
@@ -31,12 +41,22 @@ namespace Diplo.AuditLogViewer.Models
         /// <summary>
         /// Gets or sets the type of the log header eg. Publish
         /// </summary>
-        public string LogHeader { get; set; }
+        public string? LogHeader { get; set; }
 
         /// <summary>
         /// Gets or sets the comment.
         /// </summary>
-        public string LogComment { get; set; }
+        public string? LogComment { get; set; }
+
+        /// <summary>
+        /// Gets or sets additional log parameters recorded by Umbraco.
+        /// </summary>
+        public string? Parameters { get; set; }
+
+        /// <summary>
+        /// Gets or sets the entity type recorded in the log table.
+        /// </summary>
+        public string? EntityType { get; set; }
 
         /// <summary>
         /// Gets or sets the Node Id
@@ -46,7 +66,7 @@ namespace Diplo.AuditLogViewer.Models
         /// <summary>
         /// Gets the document type alias if it has one
         /// </summary>
-        public string Alias { get; set; }
+        public string? Alias { get; set; }
 
         /// <summary>
         /// Gets the object type this represents as a GUID
@@ -57,12 +77,12 @@ namespace Diplo.AuditLogViewer.Models
         /// <summary>
         /// Gets the human-readable form of the object type
         /// </summary>
-        public string TypeDesc { get; set; }
+        public string? TypeDesc { get; set; }
 
         /// <summary>
         /// Gets the Icon used for any content
         /// </summary>
-        public string Icon { get; set; }
+        public string? Icon { get; set; }
 
         /// <summary>
         /// Gets whether the item is open or not - used in the view

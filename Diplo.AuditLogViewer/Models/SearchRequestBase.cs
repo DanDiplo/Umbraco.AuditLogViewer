@@ -22,10 +22,10 @@ namespace Diplo.AuditLogViewer.Models
 
         public int PageNumber { get; set; }
 
-        public string SortColumn { get; set; }
+        public string SortColumn { get; set; } = string.Empty;
 
         public string SortOrder { get; set; }
 
-        public string SearchTerm { get; set; }
+        public string? SearchTerm { get; set; }
     }
 }

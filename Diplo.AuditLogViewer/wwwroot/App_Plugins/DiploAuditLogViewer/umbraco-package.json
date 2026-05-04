@@ -1,0 +1,14 @@
+{
+  "$schema": "../../../Umbraco/umbraco-package-schema.json",
+  "name": "Diplo.AuditLogViewer",
+  "version": "17.0.0",
+  "allowTelemetry": true,
+  "extensions": [
+    {
+      "type": "backofficeEntryPoint",
+      "alias": "Diplo.AuditLogViewer.EntryPoint",
+      "name": "Diplo Audit Log Viewer Entry Point",
+      "js": "/App_Plugins/DiploAuditLogViewer/index.js"
+    }
+  ]
+}

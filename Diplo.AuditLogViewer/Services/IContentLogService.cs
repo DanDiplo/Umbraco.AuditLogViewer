@@ -17,6 +17,10 @@ namespace Diplo.AuditLogViewer.Services
 
         IEnumerable<string> GetLogTypes();
 
+        IEnumerable<string> GetEntityTypes();
+
+        IEnumerable<LoggedNodeSuggestion> SearchLoggedNodes(string? term, int take = 10);
+
         Page<LogEntry> SearchLog(ContentLogSearchRequest request);
     }
 }

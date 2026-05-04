@@ -44,8 +44,8 @@ namespace Diplo.AuditLogViewer.Services
                     throw new ArgumentOutOfRangeException("The order by value '" + request.SortOrder + "' is not a valid sort order.");
                 }
 
-                const string sql = @"SELECT L.Id, N.[text] as Text, CASE WHEN U.userName IS NULL THEN 'SYSTEM' ELSE U.userName END as Username,
-                L.Datestamp as DateStamp, L.logHeader, L.logComment, L.nodeId,
+                const string sql = @"SELECT L.Id, N.uniqueId as UniqueId, CASE WHEN N.id IS NULL THEN 0 ELSE 1 END as NodeExists, N.[text] as Text, CASE WHEN U.userName IS NULL THEN 'SYSTEM' ELSE U.userName END as Username,
+                L.Datestamp as DateStamp, L.logHeader, L.logComment, L.parameters, L.entityType, L.nodeId,
                 CT.Alias as Alias, N.nodeObjectType, CT.icon as Icon
 			    FROM umbracoLog L
 			    LEFT JOIN umbracoUser U ON L.userId = U.id
@@ -64,6 +64,11 @@ namespace Diplo.AuditLogViewer.Services
                 if (!string.IsNullOrEmpty(request.UserName))
                 {
                     query = query.Append(" AND (CASE When U.userName IS NULL Then 'SYSTEM' ELSE U.userName END) = @0", request.UserName);
+                }
+
+                if (!string.IsNullOrEmpty(request.EntityType))
+                {
+                    query = query.Append(" AND L.entityType = @0", request.EntityType);
                 }
 
                 if (request.DateFrom.HasValue)
@@ -104,7 +109,7 @@ namespace Diplo.AuditLogViewer.Services
 
                 foreach (var node in page.Items.Where(n => n.TypeId.HasValue))
                 {
-                    node.TypeDesc = GetNodeObjectTypeName(node.TypeId.Value.ToString().ToUpper());
+                    node.TypeDesc = GetNodeObjectTypeName(node.TypeId.GetValueOrDefault().ToString().ToUpper());
                 }
 
                 return page;
@@ -218,6 +223,48 @@ namespace Diplo.AuditLogViewer.Services
             return Enum.GetNames(typeof(AuditType)).OrderBy(x => x);
         }
 
+        public IEnumerable<string> GetEntityTypes()
+        {
+            using (var scope = this.scopeProvider.CreateScope(autoComplete: true))
+            {
+                const string query = "SELECT DISTINCT entityType FROM umbracoLog WHERE entityType IS NOT NULL AND entityType <> '' ORDER BY entityType";
+
+                return scope.Database.Fetch<string>(query);
+            }
+        }
+
+        public IEnumerable<LoggedNodeSuggestion> SearchLoggedNodes(string? term, int take = 10)
+        {
+            using (var scope = this.scopeProvider.CreateScope(autoComplete: true))
+            {
+                const string sql = @"SELECT L.nodeId, N.uniqueId as UniqueId, CASE WHEN N.id IS NULL THEN 0 ELSE 1 END as NodeExists,
+                    N.[text] as Name, L.entityType
+                    FROM umbracoLog L
+                    LEFT JOIN umbracoNode N ON N.id = L.nodeId
+                    WHERE L.nodeId IS NOT NULL AND L.nodeId > 0";
+
+                var query = scope.SqlContext.Sql(sql);
+
+                if (!string.IsNullOrWhiteSpace(term))
+                {
+                    if (int.TryParse(term, out var nodeId))
+                    {
+                        query = query.Append(" AND L.nodeId = @0", nodeId);
+                    }
+                    else
+                    {
+                        query = query.Append(" AND (N.[text] LIKE @0 OR L.entityType LIKE @0)", "%" + term + "%");
+                    }
+                }
+
+                query = query.Append(" GROUP BY L.nodeId, N.uniqueId, N.id, N.[text], L.entityType")
+                    .Append(" ORDER BY MAX(L.Datestamp) DESC")
+                    .SelectTop(take);
+
+                return scope.Database.Fetch<LoggedNodeSuggestion>(query);
+            }
+        }
+
         /// <summary>
         /// Gets the top pages that were last updated that are in the audit log
         /// </summary>
@@ -251,6 +298,7 @@ namespace Diplo.AuditLogViewer.Services
             "L.Datestamp",
             "L.LogHeader",
             "L.logComment",
+            "L.entityType",
             "N.nodeObjectType",
             "CT.Icon"
         };

@@ -1,0 +1,10 @@
+<Solution>
+  <Project Path="Diplo.AuditLogViewer/Diplo.AuditLogViewer.csproj" />
+  <Folder Name="/Info/">
+    <File Path=".gitignore" />
+    <File Path="Diplo.AuditLogViewer/NuGet.md" />
+    <File Path="README.md" />
+    <File Path="umbraco-marketplace.json" />
+  </Folder>
+  <Project Path="Diplo.AuditLogViewer.Testsite/Diplo.AuditLogViewer.Testsite.csproj" />
+</Solution>

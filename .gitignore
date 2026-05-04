@@ -280,3 +280,12 @@ __pycache__/
 /BuildPackage/msbuild.binlog
 /.vs/config/applicationhost.config
 /screenshots
+
+# Umbraco 17 local runtime data
+**/umbraco/Logs/
+**/umbraco/Data/*.sqlite.db
+**/umbraco/Data/*.sqlite.db-*
+**/umbraco-run*.log
+
+# Node package dependencies
+**/node_modules/

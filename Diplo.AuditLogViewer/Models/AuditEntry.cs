@@ -11,18 +11,22 @@ namespace Diplo.AuditLogViewer.Models
 
         public int PerformingUserId { get; set; }
 
-        public string PerformingDetails { get; set; }
+        public Guid? PerformingUserKey { get; set; }
 
-        public string PerformingIP { get; set; }
+        public string? PerformingDetails { get; set; }
+
+        public string? PerformingIP { get; set; }
 
         public DateTime EventDateUtc { get; set; }
 
         public int AffectedUserId { get; set; }
 
-        public string AffectedDetails { get; set; }
+        public Guid? AffectedUserKey { get; set; }
 
-        public string EventType { get; set; }
+        public string? AffectedDetails { get; set; }
 
-        public string EventDetails { get; set; }
+        public string? EventType { get; set; }
+
+        public string? EventDetails { get; set; }
     }
 }

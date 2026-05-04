@@ -33,7 +33,7 @@ namespace Diplo.AuditLogViewer.Services
         /// <returns>A list of users</returns>
         public virtual IEnumerable<BasicUser> GetAllUsers()
         {
-            return this.cache.GetCacheItem("Diplo.AuditLogViewer.UserNames", () => GetUsers(), TimeSpan.FromSeconds(120));
+            return this.cache.GetCacheItem("Diplo.AuditLogViewer.UserNames", () => GetUsers(), TimeSpan.FromSeconds(120)) ?? Enumerable.Empty<BasicUser>();
 
             IEnumerable<BasicUser> GetUsers()
             {

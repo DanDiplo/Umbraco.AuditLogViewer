@@ -9,7 +9,7 @@ namespace Diplo.AuditLogViewer.Models
     /// <typeparam name="T">The type being pages</typeparam>
     public class PagedLogEntryResult<T>
     {
-        public List<T> LogEntries { get; set; }
+        public List<T> LogEntries { get; set; } = [];
 
         public long CurrentPage { get; set; }
 
