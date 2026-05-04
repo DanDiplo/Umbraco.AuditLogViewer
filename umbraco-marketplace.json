@@ -24,7 +24,16 @@
       "Description": "A collection of diagnostics and developer tools for the Umbraco backoffice."
     }
   ],
-  "Screenshots": [],
+  "Screenshots": [
+    {
+      "ImageUrl": "https://raw.githubusercontent.com/DanDiplo/Diplo.AuditLogViewer/v17/Images/Screenshots/content-log.png",
+      "Caption": "Content Log"
+    },
+    {
+      "ImageUrl": "https://raw.githubusercontent.com/DanDiplo/Diplo.AuditLogViewer/v17/Images/Screenshots/audit-log.png",
+      "Caption": "Audit Trail"
+    }
+  ],
   "Tags": [
     "audit",
     "audit log",

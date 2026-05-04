@@ -13,6 +13,12 @@ The package appears in the **Settings** section as **Audit Log Viewer** with two
 
 Both views use server-side paging, searching, sorting, and filtering.
 
+## Screenshots
+
+![Content Log](Images/Screenshots/content-log.png)
+
+![Audit Trail](Images/Screenshots/audit-log.png)
+
 ## Content Log
 
 The Content Log view shows records from `umbracoLog`.

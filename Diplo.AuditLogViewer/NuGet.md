@@ -16,6 +16,12 @@ This version targets **Umbraco 17** and **.NET 10**. It uses the modern Umbraco 
 - CSV export for current page or all matching rows.
 - Optional appsettings switch to hide export controls.
 
+## Screenshots
+
+![Content Log](https://raw.githubusercontent.com/DanDiplo/Diplo.AuditLogViewer/v17/Images/Screenshots/content-log.png)
+
+![Audit Trail](https://raw.githubusercontent.com/DanDiplo/Diplo.AuditLogViewer/v17/Images/Screenshots/audit-log.png)
+
 ## Configuration
 
 ```json
