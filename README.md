@@ -104,3 +104,7 @@ The client builds to:
 - Date `To` filters are treated inclusively by adding one day server-side.
 - Built assets are shipped via static web assets; legacy `package.manifest` and AngularJS files are not used.
 
+## Umbraco Marketplace
+
+https://marketplace.umbraco.com/package/diplo.auditlogviewer
+

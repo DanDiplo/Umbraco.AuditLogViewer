@@ -18,9 +18,9 @@ This version targets **Umbraco 17** and **.NET 10**. It uses the modern Umbraco 
 
 ## Screenshots
 
-![Content Log](https://raw.githubusercontent.com/DanDiplo/Diplo.AuditLogViewer/v17/Images/Screenshots/content-log.png)
+![Content Log](https://raw.githubusercontent.com/DanDiplo/Umbraco.AuditLogViewer/refs/heads/v17/Images/Screenshots/content-log.png)
 
-![Audit Trail](https://raw.githubusercontent.com/DanDiplo/Diplo.AuditLogViewer/v17/Images/Screenshots/audit-log.png)
+![Audit Trail](https://raw.githubusercontent.com/DanDiplo/Umbraco.AuditLogViewer/refs/heads/v17/Images/Screenshots/audit-log.png)
 
 ## Configuration
 
@@ -40,3 +40,7 @@ Set `DisableExport` to `true` to remove CSV export controls from the backoffice 
 - .NET 10
 
 Older Umbraco versions should use the corresponding older package releases.
+
+## Umbraco Marketplace
+
+https://marketplace.umbraco.com/package/diplo.auditlogviewer
