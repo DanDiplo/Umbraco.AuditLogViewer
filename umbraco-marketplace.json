@@ -1,21 +1,32 @@
 {
+  "Title": "Diplo Audit Log Viewer",
+  "AlternatePackageNames": [
+    "Umbraco Audit Log Viewer",
+    "Diplo.AuditLogViewer",
+    "AuditLogViewer",
+    "Audit Trail Viewer",
+    "Content Log Viewer",
+    "Diplo Log Viewer"
+  ],
   "$schema": "https://marketplace.umbraco.com/umbraco-marketplace-schema.json",
   "AuthorDetails": {
-    "Name": "Diplo",
-    "Url": "https://www.diplo.co.uk",
-    "Description": "Diplo is a UK Umbraco Gold Partner agency, founded by Dan Diplo, specialising in building, supporting and enhancing Umbraco solutions.",
-    "ImageUrl": "https://raw.githubusercontent.com/DanDiplo/Diplo.AuditLogViewer/v17/Images/Icon/DiploAuditLogViewerIcon.png"
+    "Name": "Dan 'Diplo' Booth",
+    "Description": "Dan is an Umbraco MVP and has been releasing packages for Umbraco since Umbraco 6",
+    "Url": "https://www.diplo.co.uk/",
+    "ImageUrl": "https://pbs.twimg.com/profile_images/794295655846002688/S8SQ_XFM_400x400.jpg"
   },
   "Category": "Developer Tools",
   "Description": "Diplo Audit Log Viewer for Umbraco CMS lets Settings users view, search, filter, sort and export Content Log and Audit Trail data from the Umbraco backoffice. The Umbraco 17 version uses Lit/TypeScript backoffice extensions, Management API endpoints, node autocomplete and contextual workspace links.",
   "DocumentationUrl": "https://github.com/DanDiplo/Diplo.AuditLogViewer/blob/v17/README.md",
   "IssueTrackerUrl": "https://github.com/DanDiplo/Diplo.AuditLogViewer/issues",
-  "LicenseTypes": ["Free"],
+  "LicenseTypes": [ "Free" ],
   "PackageType": "Package",
   "PackagesByAuthor": [
-    "Diplo.GodMode",
-    "Diplo.TraceLogViewer",
-    "Diplo.LinkChecker"
+    "Diplo.AuditLogViewer",
+    "Diplo.MediaDownloader",
+    "Diplo.Translator",
+    "Diplo.DictionaryEditor",
+    "DiploTraceLogViewer"
   ],
   "RelatedPackages": [
     {
@@ -42,6 +53,5 @@
     "management api",
     "lit",
     "umbraco 17"
-  ],
-  "Title": "Diplo Audit Log Viewer"
+  ]
 }
