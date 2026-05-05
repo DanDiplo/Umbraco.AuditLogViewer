@@ -1,6 +1,7 @@
 {
   "Title": "Diplo Audit Log Viewer",
   "AlternatePackageNames": [
+    "Umbraco.AuditLogViewer",
     "Umbraco Audit Log Viewer",
     "Diplo.AuditLogViewer",
     "AuditLogViewer",
@@ -17,8 +18,8 @@
   },
   "Category": "Developer Tools",
   "Description": "Diplo Audit Log Viewer for Umbraco CMS lets Settings users view, search, filter, sort and export Content Log and Audit Trail data from the Umbraco backoffice. The Umbraco 17 version uses Lit/TypeScript backoffice extensions, Management API endpoints, node autocomplete and contextual workspace links.",
-  "DocumentationUrl": "https://github.com/DanDiplo/Diplo.AuditLogViewer/blob/v17/README.md",
-  "IssueTrackerUrl": "https://github.com/DanDiplo/Diplo.AuditLogViewer/issues",
+  "DocumentationUrl": "https://github.com/DanDiplo/Umbraco.AuditLogViewer/blob/v17/README.md",
+  "IssueTrackerUrl": "https://github.com/DanDiplo/Umbraco.AuditLogViewer/issues",
   "LicenseTypes": [ "Free" ],
   "PackageType": "Package",
   "PackagesByAuthor": [
@@ -37,21 +38,20 @@
   ],
   "Screenshots": [
     {
-      "ImageUrl": "https://raw.githubusercontent.com/DanDiplo/Diplo.AuditLogViewer/v17/Images/Screenshots/content-log.png",
+      "ImageUrl": "https://raw.githubusercontent.com/DanDiplo/Umbraco.AuditLogViewer/refs/heads/v17/Images/Screenshots/content-log.png",
       "Caption": "Content Log"
     },
     {
-      "ImageUrl": "https://raw.githubusercontent.com/DanDiplo/Diplo.AuditLogViewer/v17/Images/Screenshots/audit-log.png",
+      "ImageUrl": "https://raw.githubusercontent.com/DanDiplo/Umbraco.AuditLogViewer/refs/heads/v17/Images/Screenshots/audit-log.png",
       "Caption": "Audit Trail"
     }
   ],
   "Tags": [
+    "logs",
     "audit",
+    "changes",
     "audit log",
-    "content log",
-    "settings",
-    "management api",
-    "lit",
-    "umbraco 17"
+    "audit trail",
+    "change log"
   ]
 }
